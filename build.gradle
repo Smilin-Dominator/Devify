@@ -1,9 +1,13 @@
 plugins {
     id 'java'
+    id "com.github.johnrengelman.shadow" version "7.1.0"
 }
 
 group 'com.danish_programming'
 version 'beta-v0.0'
+
+apply plugin: 'java'
+apply plugin: 'com.github.johnrengelman.shadow'
 
 repositories {
     mavenCentral()
@@ -12,6 +16,22 @@ repositories {
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+}
+
+jar {
+    manifest {
+        attributes 'Name': "Devify",
+                'Created-By': 'Devisha Padmaperuma and Manish Boteju',
+                'Main-Class': 'main'
+    }
+}
+
+shadowJar {
+    dependencies {
+        exclude(dependency('org.junit.jupiter:junit-jupiter-engine:.*'))
+        exclude(dependency('org.junit.jupiter:junit-jupiter-api:.*'))
+        exclude(dependency('junit:junit:.*'))
+    }
 }
 
 test {
