@@ -1,0 +1,17 @@
+.idea/
+.vscode/
+*.txt
+*.yml
+*.jar
+*.class
+build/
+dist/
+*.DS_Store
+data/
+*.path
+out/
+nbproject/private/*
+
+.gradle/
+gradle-app.setting
+!gradle-wrapper.jar
