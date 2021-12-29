@@ -30,7 +30,7 @@ public class verify {
         }
 
         // Hashing the string
-        String new_hash = hashing.sha256(build.toString());
+        String new_hash = hashing.string(build.toString());
 
         // Return the result of the two
         return Objects.equals(new_hash, hash);
