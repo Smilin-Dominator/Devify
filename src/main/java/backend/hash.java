@@ -1,22 +1,19 @@
 package backend;
 
-import com.google.common.hash.HashFunction;
-import com.google.common.hash.Hashing;
+import org.apache.commons.codec.digest.DigestUtils;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.nio.charset.StandardCharsets;
-import java.util.Scanner;
+import java.io.FileInputStream;
+import java.io.IOException;
 
 public class hash {
 
-    private final HashFunction sha256_hasher = Hashing.sha256();
 
     public String string(String a) {
-        return sha256_hasher.hashString(a, StandardCharsets.UTF_8).toString();
+        return DigestUtils.sha256Hex(a);
     }
 
-    public String file(String path) throws FileNotFoundException {
+    public String file(String path) throws IOException {
 
         // Creating A File With The Path
         File fil = new File(path);
@@ -27,17 +24,8 @@ public class hash {
             System.exit(1);
         }
 
-        // Preparing to read the file
-        Scanner reader = new Scanner(fil);
-        StringBuilder build = new StringBuilder();
-
-        // Reading the file line by line
-        while (reader.hasNextLine()) {
-            build.append(reader.nextLine());
-        }
-
-        // Returning the hashed result
-        return string(build.toString());
+        // Hashing the file itself
+        return DigestUtils.sha256Hex(new FileInputStream(fil));
 
     }
 
