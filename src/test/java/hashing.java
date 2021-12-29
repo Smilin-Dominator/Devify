@@ -10,11 +10,20 @@ public class hashing {
 
     @Test
     void hashString() {
+
         String tbh = "This is a test!";
         String hashed = hashing_test.string(tbh);
         String real_hash = "54ba1fdce5a89e0d3eee6e4c587497833bc38c3586ff02057dd6451fd2d6b640";
         boolean eq = Objects.equals(real_hash, hashed);
+
+        System.out.println("------------------------ Hashing Test ---------------------------");
+        System.out.println("The String              : " + tbh);
+        System.out.println("The Real Hash           : " + real_hash);
+        System.out.println("The Program's Hash      : " + hashed);
+        System.out.println("Matched?                : " + eq);
+
         assertTrue(eq);
+
     }
 
 }
