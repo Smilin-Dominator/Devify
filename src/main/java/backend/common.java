@@ -14,8 +14,8 @@ public class common {
      * @return True if it's the last string, False if it doesn't exist
      */
     public boolean filename_in_path(String filename, String path) {
-        String[] path_split = path.split("/");
-        String[] file_split = filename.split("/");
+        String[] path_split = path.split("\\\\");
+        String[] file_split = filename.split("\\\\");
         return Objects.equals(path_split[path_split.length - 1], file_split[file_split.length - 1]);
     }
 
