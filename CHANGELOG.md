@@ -39,7 +39,16 @@ This release added a test for Checksums as well as organizing the tests
 ### Fixed
 - None
 
+## [v1.1.2] - 12th December, 2021
+### Notes
+This release added JavaDoc / API Docs for all the classes and their functions
+### Features
+- JavaDoc for all!
+### Fixed
+- None
+
 [v1.0]: https://github.com/Smilin-Dominator/Devify/releases/tag/v1.0
 [v1.0.1]: https://github.com/Smilin-Dominator/Devify/compare/v1.0...v1.0.1
 [v1.1]: https://github.com/Smilin-Dominator/Devify/compare/v1.0.1...v1.1
 [v1.1.1]: https://github.com/Smilin-Dominator/Devify/compare/v1.1...v1.1.1
+[v1.1.2]: https://github.com/Smilin-Dominator/Devify/compare/v1.1.1...v1.1.2
