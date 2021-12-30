@@ -24,7 +24,7 @@ public class ui extends JFrame implements ActionListener {
 
         // Main Panel
         JPanel master = new JPanel();
-        master.setLayout(new BorderLayout(0, 0));
+        master.setLayout(new BoxLayout(master, BoxLayout.Y_AXIS));
 
         // Hash Text
         hashText = new JTextField();
@@ -35,8 +35,8 @@ public class ui extends JFrame implements ActionListener {
         fileChooser.addActionListener(this);
 
         // Addition
-        master.add(fileChooser, BorderLayout.NORTH);
-        master.add(hashText, BorderLayout.SOUTH);
+        master.add(fileChooser);
+        master.add(hashText);
         add(master);
 
         // Final
