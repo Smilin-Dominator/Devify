@@ -31,6 +31,15 @@ This release adds colours to the buttons
 ### Fixed
 - None
 
+## [v1.1.1] - 12th December, 2021
+### Notes
+This release added a test for Checksums as well as organizing the tests
+### Features
+- One new test
+### Fixed
+- None
+
 [v1.0]: https://github.com/Smilin-Dominator/Devify/releases/tag/v1.0
 [v1.0.1]: https://github.com/Smilin-Dominator/Devify/compare/v1.0...v1.0.1
 [v1.1]: https://github.com/Smilin-Dominator/Devify/compare/v1.0.1...v1.1
+[v1.1.1]: https://github.com/Smilin-Dominator/Devify/compare/v1.1...v1.1.1
