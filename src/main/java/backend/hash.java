@@ -25,7 +25,12 @@ public class hash {
         }
 
         // Hashing the file itself
-        return DigestUtils.sha256Hex(new FileInputStream(fil));
+        String hash = DigestUtils.sha256Hex(new FileInputStream(fil));
+        System.out.println("Chosen File : " + path);
+        System.out.println("Hash        : " + hash);
+
+        return hash;
+
 
     }
 

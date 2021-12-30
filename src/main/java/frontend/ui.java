@@ -3,7 +3,6 @@ package frontend;
 import backend.hash;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -52,9 +51,7 @@ public class ui extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String ac_com = e.getActionCommand();
         if (Objects.equals(ac_com, "ApproveSelection")) {
-            String path = fileChooser.getSelectedFile().getAbsolutePath();
-            chosen_file = path;
-            System.out.println("Chosen File: " + path);
+            chosen_file = fileChooser.getSelectedFile().getAbsolutePath();
             try {
                 hash_file();
             } catch (IOException ex) {
