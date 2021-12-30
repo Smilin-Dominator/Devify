@@ -37,9 +37,7 @@ public class ui extends JFrame implements ActionListener {
 
         // Actions For The File
         fileActions = new JPanel();
-        fileActions.setBackground(Color.getHSBColor(174, 77, 77));
-        fileActions.setLayout(new BorderLayout(1, 1));
-        fileActions.add(hashText, BorderLayout.PAGE_END);
+        fileActions.setVisible(false);
 
         // Adding to Master
         master.add(fileChooser);
@@ -52,15 +50,30 @@ public class ui extends JFrame implements ActionListener {
     }
 
     public void showActions() {
+
         fileActions.removeAll();
         fileActions.revalidate();
+
+        fileActions.setBackground(Color.getHSBColor(174, 77, 77));
+        fileActions.setLayout(new BorderLayout(1, 1));
 
         JButton genHash = new JButton("Generate Hash");
         genHash.addActionListener(this);
 
-        fileActions.add(hashText, BorderLayout.PAGE_END);
+        JButton genChecksum = new JButton("Generate Checksum");
+        genChecksum.addActionListener(this);
+
+        JButton verifyChecksum = new JButton("Verify Checksum");
+        verifyChecksum.addActionListener(this);
+
+        fileActions.add(hashText, BorderLayout.PAGE_START);
+        fileActions.add(genHash, BorderLayout.LINE_START);
+        fileActions.add(genChecksum, BorderLayout.CENTER);
+        fileActions.add(verifyChecksum, BorderLayout.LINE_END);
 
         fileActions.repaint();
+        fileActions.setVisible(true);
+
     }
 
     public void hash_file() throws IOException {
@@ -75,13 +88,9 @@ public class ui extends JFrame implements ActionListener {
         // The File Choosing Section
         if (Objects.equals(ac_com, "ApproveSelection")) {
             chosen_file = fileChooser.getSelectedFile().getAbsolutePath();
-            try {
-                hash_file();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
+            showActions();
         } else if (Objects.equals(ac_com, "CancelSelection")) {
-            System.exit(0);
+            fileActions.setVisible(false);
         }
 
     }
