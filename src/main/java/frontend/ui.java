@@ -29,7 +29,7 @@ public class ui extends JFrame implements ActionListener {
 
         // Hash Text
         hashText = new JTextField();
-        hashText.setText("Select A File!");
+        hashText.setText("Choose An Action!");
 
         // File Chooser
         fileChooser = new JFileChooser();
@@ -56,6 +56,7 @@ public class ui extends JFrame implements ActionListener {
 
         fileActions.setBackground(Color.getHSBColor(174, 77, 77));
         fileActions.setLayout(new BorderLayout(1, 1));
+        hashText.setText("Choose An Action!");
 
         JButton genHash = new JButton("Generate Hash");
         genHash.addActionListener(this);
@@ -89,8 +90,24 @@ public class ui extends JFrame implements ActionListener {
         if (Objects.equals(ac_com, "ApproveSelection")) {
             chosen_file = fileChooser.getSelectedFile().getAbsolutePath();
             showActions();
-        } else if (Objects.equals(ac_com, "CancelSelection")) {
+        }
+        else if (Objects.equals(ac_com, "CancelSelection")) {
             fileActions.setVisible(false);
+        }
+
+        // The File Actions
+        else if (Objects.equals(ac_com, "Generate Hash")) {
+            try {
+                hash_file();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+        else if (Objects.equals(ac_com, "Generate Checksum")) {
+            System.out.println("fff");
+        }
+        else if (Objects.equals(ac_com, "Verify Checksum")) {
+            System.out.println("fff");
         }
 
     }
