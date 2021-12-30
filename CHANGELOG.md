@@ -13,4 +13,15 @@ good backend functions!
 ### Fixed
   - The Checksum Function (It couldn't get the path correctly.)
 
+
+## [v1.0.1] - 12th December, 2021
+### Notes
+I added this very document and a README file with instructions on how to use it.
+### Features
+- New README File
+- New CHANGELOG File (this)
+### Fixed
+- None
+
 [v1.0]: https://github.com/Smilin-Dominator/Devify/releases/tag/v1.0
+[v1.0.1]: https://github.com/Smilin-Dominator/Devify/compare/v1.0...v1.0.1
