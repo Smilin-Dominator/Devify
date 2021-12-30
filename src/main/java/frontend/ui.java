@@ -28,7 +28,7 @@ public class ui extends JFrame implements ActionListener {
     public ui() {
 
         // Bare Bones
-        setSize(450,800);
+        setSize(485,800);
         setTitle("Devify - The Verifier!");
 
         // Main Panel
@@ -37,6 +37,7 @@ public class ui extends JFrame implements ActionListener {
 
         // Hash Text
         hashText = new JTextField();
+        hashText.setHorizontalAlignment(JTextField.CENTER);
         hashText.setText("Choose An Action!");
 
         // File Chooser
