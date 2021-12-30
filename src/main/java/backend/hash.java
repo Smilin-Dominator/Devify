@@ -10,13 +10,28 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+
+/**
+ * This class is responsible for providing hashes, hashing files and writing checksums!
+ */
 public class hash {
 
-
+    /**
+     * Returns a hash of a string
+     * @param a The string to be hashed
+     * @return The SHA256 Hash as a string
+     */
     public String string(String a) {
         return DigestUtils.sha256Hex(a);
     }
 
+    /**
+     * Loads a file as a FileInputStream and returns it's hash, similar to the 'sha256sum' and 'Get-FileHash' commands
+     * in *NIX and DOS respectively
+     * @param path The path to the file
+     * @return The SHA256 Hash of the File
+     * @throws IOException If there's an error while reading the file
+     */
     public String file(String path) throws IOException {
 
         // Creating A File With The Path
@@ -37,6 +52,12 @@ public class hash {
 
     }
 
+    /**
+     * Writes a checksum ('sha256.txt') in the format "hash  filename"
+     * @param hash The SHA256 Hash of the File
+     * @param path The path to the file
+     * @param status The JTextField to write the status to
+     */
     public void checksum(String hash, String path, JTextField status) {
 
         // Getting the path of the checksum hash

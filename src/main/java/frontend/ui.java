@@ -15,28 +15,53 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Objects;
 
+
+/** This class is the main User Interface of the Program */
 public class ui extends JFrame implements ActionListener {
 
-    // Colours
+    /*------------------  Colours ---------------------*/
+
+    /** Used in the background of 'hashText' */
     private final Color sea_green_crayola = Color.decode("#00FFC5");
+
+    /** Used when an item is selected in the FileChooser */
     private final Color celeste = Color.decode("#ADF5FF");
+
+    /** Used for the button 'Generate Checksum' */
     private final Color orange_red_crayola = Color.decode("#FF5E5B");
+
+    /** Used for the button 'Generate Hash' */
     private final Color corn = Color.decode("#FFED66");
+
+    /** Used for the button 'Verify Checksum' */
     private final Color yellow_orange = Color.decode("#F4AC45");
 
-    // Backend Functions
+    /*------------------- My Packages  ---------------*/
+
+    /** The hashing class (backend.hash) */
     private final hash Hash = new hash();
+
+    /** The verifying class (backend.verify) */
     private final verify Verify = new verify();
+
+    /** The common functions class (backend.common) */
     private final common Common = new common();
 
-    // JElements
+    /*------------------- JElements  ---------------*/
+
+    /** The main file explorer */
     private final JFileChooser fileChooser;
+
+    /** The main status bar (stored in fileActions) */
     private final JTextField hashText;
+
+    /** The file actions panel which is visible only when a file is selected */
     private final JPanel fileActions;
 
-    // Strings
+    /**The absolute path of the chosen file */
     private String chosen_file;
 
+    /** This constructs the main UI */
     public ui() {
 
         // Bare Bones
@@ -73,6 +98,11 @@ public class ui extends JFrame implements ActionListener {
 
     }
 
+    /**
+     * Upon selecting a file, this activates. It completely destroys all elements of the previous
+     * instance of it and rebuilds it with; The Status Bar (hashText) at the Top and three buttons (genHash,
+     * genChecksum, verifyChecksum) at the center. It then repaints and displays the new menu.
+     */
     private void showActions() {
 
         fileActions.removeAll();
@@ -106,6 +136,10 @@ public class ui extends JFrame implements ActionListener {
 
     }
 
+    /**
+     * Sets the Status to the hash of the chosen file
+     * @throws IOException If there's a problem reading the file
+     */
     private void hash_file() throws IOException {
         hashText.setText(Hash.file(chosen_file));
     }
