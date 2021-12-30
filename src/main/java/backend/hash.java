@@ -5,6 +5,9 @@ import org.apache.commons.codec.digest.DigestUtils;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class hash {
 
@@ -31,6 +34,23 @@ public class hash {
 
         return hash;
 
+    }
+
+    public void checksum(String hash, String path) {
+
+        // Getting the path of the checksum hash
+        String directory = new File(path).getParentFile().getName();
+        Path path_to_cs = Paths.get(directory, "sha256.txt");
+
+        // Constructing the string
+        String text = hash + "  " + path;
+
+        // Writing to the file
+        try {
+            Files.writeString(path_to_cs, text);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
