@@ -23,5 +23,14 @@ I added this very document and a README file with instructions on how to use it.
 ### Fixed
 - None
 
+## [v1.1] - 12th December, 2021
+### Notes
+This release adds colours to the buttons
+### Features
+- All the items in the action bar are coloured
+### Fixed
+- None
+
 [v1.0]: https://github.com/Smilin-Dominator/Devify/releases/tag/v1.0
 [v1.0.1]: https://github.com/Smilin-Dominator/Devify/compare/v1.0...v1.0.1
+[v1.1]: https://github.com/Smilin-Dominator/Devify/compare/v1.0.1...v1.1
