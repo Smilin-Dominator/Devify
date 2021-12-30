@@ -141,7 +141,7 @@ public class ui extends JFrame implements ActionListener {
                     hashText.setText("This Is Not The File That's Hashed!");
                 }
             } catch (IOException ex) {
-                ex.printStackTrace();
+                hashText.setText("There is no 'sha256.txt' in this DIR!");
             }
         }
 
