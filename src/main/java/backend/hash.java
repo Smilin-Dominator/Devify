@@ -20,7 +20,7 @@ public class hash {
 
         // Exit if the Path does not exist
         if (!fil.exists()) {
-            System.out.println("Path Does Not Exist!");
+            System.out.println("Path '" + fil.getAbsolutePath() + "' Does Not Exist!");
             System.exit(1);
         }
 
