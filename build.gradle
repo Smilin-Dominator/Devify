@@ -22,7 +22,7 @@ jar {
     manifest {
         attributes 'Name': "Devify",
                 'Created-By': 'Devisha Padmaperuma and Manish Boteju',
-                'Main-Class': 'main'
+                'Main-Class': 'main.Main'
     }
 }
 
