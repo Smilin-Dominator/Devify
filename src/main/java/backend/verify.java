@@ -56,17 +56,27 @@ public class verify {
      */
     public void verify_with_checksum(String path_to_file, JTextField hashText) {
         try {
+
+            // Create a class for the common functions
             common Common = new common();
+
+            // Make 'Path' objects
             Path dir = Paths.get(path_to_file).getParent();
             Path shafile = Paths.get(dir.toString(), "sha256.txt");
+
+            // Get the first line of the file
             List<String> contents = Files.readAllLines(shafile);
             String line = contents.get(0);
+
+            // Split the line and obtain information
             String[] line_split = line.split("  ");
             String hash = line_split[0];
             String filename = line_split[1];
+
+            // Verifies the file if the filename is in the absolute path
             boolean samefile = Common.filename_in_path(path_to_file, filename);
             if (samefile) {
-                if (Objects.equals(hash, hashText.getText())) {
+                if (verify_file(path_to_file, hash)) {
                     hashText.setText("File Is The Same!");
                 } else {
                     hashText.setText("File Is Not The Same!");
@@ -74,6 +84,7 @@ public class verify {
             } else {
                 hashText.setText("This Is Not The File That's Hashed!");
             }
+
         } catch (IOException ex) {
             hashText.setText("There is no 'sha256.txt' in this DIR!");
         }

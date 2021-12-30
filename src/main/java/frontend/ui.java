@@ -168,12 +168,7 @@ public class ui extends JFrame implements ActionListener {
             }
         }
         else if (Objects.equals(ac_com, "Verify Checksum")) {
-            try {
-                hash_file();
-                Verify.verify_with_checksum(chosen_file, hashText);
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
+            Verify.verify_with_checksum(chosen_file, hashText);
         }
 
     }
