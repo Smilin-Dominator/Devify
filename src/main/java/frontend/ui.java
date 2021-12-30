@@ -176,28 +176,7 @@ public class ui extends JFrame implements ActionListener {
             }
         }
         else if (Objects.equals(ac_com, "Verify Checksum")) {
-            try {
-                Path dir = Paths.get(chosen_file).getParent();
-                Path shafile = Paths.get(dir.toString(), "sha256.txt");
-                List<String> contents = Files.readAllLines(shafile);
-                String line = contents.get(0);
-                String[] line_split = line.split("  ");
-                String hash = line_split[0];
-                String filename = line_split[1];
-                boolean samefile = Common.filename_in_path(chosen_file, filename);
-                if (samefile) {
-                    hash_file();
-                    if (Objects.equals(hash, hashText.getText())) {
-                        hashText.setText("File Is The Same!");
-                    } else {
-                        hashText.setText("File Is Not The Same!");
-                    }
-                } else {
-                    hashText.setText("This Is Not The File That's Hashed!");
-                }
-            } catch (IOException ex) {
-                hashText.setText("There is no 'sha256.txt' in this DIR!");
-            }
+            Verify.verify_with_checksum(chosen_file);
         }
 
     }

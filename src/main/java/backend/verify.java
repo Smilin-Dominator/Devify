@@ -1,6 +1,10 @@
 package backend;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -42,6 +46,31 @@ public class verify {
     public boolean verify_string(String string, String hash) {
         String new_hash = hashing.string(string);
         return compare_hashes(hash, new_hash);
+    }
+
+    public boolean verify_with_checksum(String path_to_file) {
+        try {
+            Path dir = Paths.get(path_to_file).getParent();
+            Path shafile = Paths.get(dir.toString(), "sha256.txt");
+            List<String> contents = Files.readAllLines(shafile);
+            String line = contents.get(0);
+            String[] line_split = line.split("  ");
+            String hash = line_split[0];
+            String filename = line_split[1];
+            boolean samefile = Common.filename_in_path(chosen_file, filename);
+            if (samefile) {
+                hash_file();
+                if (Objects.equals(hash, hashText.getText())) {
+                    hashText.setText("File Is The Same!");
+                } else {
+                    hashText.setText("File Is Not The Same!");
+                }
+            } else {
+                hashText.setText("This Is Not The File That's Hashed!");
+            }
+        } catch (IOException ex) {
+            hashText.setText("There is no 'sha256.txt' in this DIR!");
+        }
     }
 
 }
