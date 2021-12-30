@@ -3,7 +3,7 @@ plugins {
     id "com.github.johnrengelman.shadow" version "7.1.0"
 }
 
-group 'com.danish_programming'
+group 'com.smilin_dominator'
 version 'beta-v0.0'
 
 apply plugin: 'java'
@@ -21,7 +21,7 @@ dependencies {
 jar {
     manifest {
         attributes 'Name': "Devify",
-                'Created-By': 'Devisha Padmaperuma and Manish Boteju',
+                'Created-By': 'Devisha Padmaperuma',
                 'Main-Class': 'main.Main'
     }
 }
