@@ -2,6 +2,9 @@ package backend;
 
 import java.util.Objects;
 
+/**
+ * This class consists of common functions that're needed by all parts.
+ */
 public class common {
 
     /**
