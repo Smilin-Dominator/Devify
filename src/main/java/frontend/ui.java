@@ -17,12 +17,20 @@ import java.util.Objects;
 
 public class ui extends JFrame implements ActionListener {
 
+    // Colours
+    private final Color sea_green_crayola = Color.getColor("00FFC5");
+
+    // Backend Functions
     private final hash Hash = new hash();
     private final verify Verify = new verify();
     private final common Common = new common();
+
+    // JElements
     private final JFileChooser fileChooser;
     private final JTextField hashText;
     private final JPanel fileActions;
+
+    // Strings
     private String chosen_file;
 
     public ui() {
@@ -58,7 +66,7 @@ public class ui extends JFrame implements ActionListener {
 
     }
 
-    public void showActions() {
+    private void showActions() {
 
         fileActions.removeAll();
         fileActions.revalidate();
@@ -86,7 +94,7 @@ public class ui extends JFrame implements ActionListener {
 
     }
 
-    public void hash_file() throws IOException {
+    private void hash_file() throws IOException {
         hashText.setText(Hash.file(chosen_file));
     }
 
