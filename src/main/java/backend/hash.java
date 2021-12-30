@@ -2,6 +2,7 @@ package backend;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
+import javax.swing.JTextField;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -36,7 +37,7 @@ public class hash {
 
     }
 
-    public void checksum(String hash, String path) {
+    public void checksum(String hash, String path, JTextField status) {
 
         // Getting the path of the checksum hash
         Path directory = Paths.get(path).getParent();
@@ -49,8 +50,11 @@ public class hash {
         try {
             assert path_to_cs.toFile().createNewFile();
             Files.writeString(path_to_cs, text);
+            status.setText("Success!");
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (AssertionError e) {
+            status.setText("A checksum exists in this directory!");
         }
 
     }
