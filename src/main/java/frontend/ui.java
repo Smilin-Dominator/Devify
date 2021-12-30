@@ -18,11 +18,11 @@ import java.util.Objects;
 public class ui extends JFrame implements ActionListener {
 
     // Colours
-    private final Color sea_green_crayola = Color.getColor("00FFC5");
-    private final Color celeste = Color.getColor("ADF5FF");
-    private final Color orange_red_crayola = Color.getColor("FF5E5B");
-    private final Color corn = Color.getColor("FFED66");
-    private final Color yellow_orange = Color.getColor("F4AC45");
+    private final Color sea_green_crayola = Color.decode("#00FFC5");
+    private final Color celeste = Color.decode("#ADF5FF");
+    private final Color orange_red_crayola = Color.decode("#FF5E5B");
+    private final Color corn = Color.decode("#FFED66");
+    private final Color yellow_orange = Color.decode("#F4AC45");
 
     // Backend Functions
     private final hash Hash = new hash();
