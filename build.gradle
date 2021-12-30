@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'com.smilin_dominator'
-version 'beta-v0.0'
+version 'beta-v1.0'
 
 apply plugin: 'java'
 apply plugin: 'com.github.johnrengelman.shadow'
