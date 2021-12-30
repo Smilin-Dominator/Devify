@@ -2,9 +2,13 @@ package backend;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
+import javax.swing.JTextField;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class hash {
 
@@ -20,12 +24,38 @@ public class hash {
 
         // Exit if the Path does not exist
         if (!fil.exists()) {
-            System.out.println("Path Does Not Exist!");
+            System.out.println("Path '" + fil.getAbsolutePath() + "' Does Not Exist!");
             System.exit(1);
         }
 
         // Hashing the file itself
-        return DigestUtils.sha256Hex(new FileInputStream(fil));
+        String hash = DigestUtils.sha256Hex(new FileInputStream(fil));
+        System.out.println("Chosen File : " + path);
+        System.out.println("Hash        : " + hash);
+
+        return hash;
+
+    }
+
+    public void checksum(String hash, String path, JTextField status) {
+
+        // Getting the path of the checksum hash
+        Path directory = Paths.get(path).getParent();
+        Path path_to_cs = Paths.get(directory.toString(), "sha256.txt");
+
+        // Constructing the string
+        String text = hash + "  " + path;
+
+        // Writing to the file
+        try {
+            assert path_to_cs.toFile().createNewFile();
+            Files.writeString(path_to_cs, text);
+            status.setText("Success!");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (AssertionError e) {
+            status.setText("A checksum exists in this directory!");
+        }
 
     }
 
