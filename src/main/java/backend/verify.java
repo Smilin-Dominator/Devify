@@ -1,5 +1,6 @@
 package backend;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -48,8 +49,14 @@ public class verify {
         return compare_hashes(hash, new_hash);
     }
 
-    public boolean verify_with_checksum(String path_to_file) {
+    /**
+     * This checks the checksum file and verifies the integrity of the file
+     * @param path_to_file The path to the file you want to verify
+     * @param hashText The main status bar
+     */
+    public void verify_with_checksum(String path_to_file, JTextField hashText) {
         try {
+            common Common = new common();
             Path dir = Paths.get(path_to_file).getParent();
             Path shafile = Paths.get(dir.toString(), "sha256.txt");
             List<String> contents = Files.readAllLines(shafile);
@@ -57,9 +64,8 @@ public class verify {
             String[] line_split = line.split("  ");
             String hash = line_split[0];
             String filename = line_split[1];
-            boolean samefile = Common.filename_in_path(chosen_file, filename);
+            boolean samefile = Common.filename_in_path(path_to_file, filename);
             if (samefile) {
-                hash_file();
                 if (Objects.equals(hash, hashText.getText())) {
                     hashText.setText("File Is The Same!");
                 } else {

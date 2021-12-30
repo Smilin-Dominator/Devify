@@ -2,17 +2,12 @@ package frontend;
 
 import backend.hash;
 import backend.verify;
-import backend.common;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.List;
 import java.util.Objects;
 
 
@@ -43,9 +38,6 @@ public class ui extends JFrame implements ActionListener {
 
     /** The verifying class (backend.verify) */
     private final verify Verify = new verify();
-
-    /** The common functions class (backend.common) */
-    private final common Common = new common();
 
     /*------------------- JElements  ---------------*/
 
@@ -176,7 +168,12 @@ public class ui extends JFrame implements ActionListener {
             }
         }
         else if (Objects.equals(ac_com, "Verify Checksum")) {
-            Verify.verify_with_checksum(chosen_file);
+            try {
+                hash_file();
+                Verify.verify_with_checksum(chosen_file, hashText);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         }
 
     }
