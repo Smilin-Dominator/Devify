@@ -51,11 +51,13 @@ public class ui extends JFrame implements ActionListener {
         // Hash Text
         hashText = new JTextField();
         hashText.setHorizontalAlignment(JTextField.CENTER);
+        hashText.setBackground(sea_green_crayola);
         hashText.setText("Choose An Action!");
 
         // File Chooser
         fileChooser = new JFileChooser();
         fileChooser.addActionListener(this);
+        UIManager.put("Table.focusCellBackground", celeste);
 
         // Actions For The File
         fileActions = new JPanel();
@@ -76,18 +78,23 @@ public class ui extends JFrame implements ActionListener {
         fileActions.removeAll();
         fileActions.revalidate();
 
-        fileActions.setBackground(Color.getHSBColor(174, 77, 77));
-        fileActions.setLayout(new BorderLayout(1, 1));
+        fileActions.setLayout(new BorderLayout(5, 1));
         hashText.setText("Choose An Action!");
 
         JButton genHash = new JButton("Generate Hash");
+        genHash.setBackground(corn);
         genHash.addActionListener(this);
+        genHash.setOpaque(true);
 
         JButton genChecksum = new JButton("Generate Checksum");
+        genChecksum.setBackground(orange_red_crayola);
         genChecksum.addActionListener(this);
+        genChecksum.setOpaque(true);
 
         JButton verifyChecksum = new JButton("Verify Checksum");
+        verifyChecksum.setBackground(yellow_orange);
         verifyChecksum.addActionListener(this);
+        verifyChecksum.setOpaque(true);
 
         fileActions.add(hashText, BorderLayout.PAGE_START);
         fileActions.add(genHash, BorderLayout.LINE_START);
