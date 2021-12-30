@@ -2,8 +2,10 @@ import backend.hash;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
+import javax.swing.*;
 import java.util.Arrays;
 import java.util.List;
 import java.io.File;
@@ -17,6 +19,7 @@ public class hashing {
     private final hash hashing_test = new hash();
 
     @Test
+    @Order(1)
     void hashString() {
 
         String tbh = "This is a test!";
@@ -35,6 +38,7 @@ public class hashing {
     }
 
     @Test
+    @Order(2)
     void hashFile() throws IOException {
 
         String real_hash = "abdc941476c8244ab0da7df485644f13ac0eb9cb662813a7a31a13b1b034312a";
@@ -58,9 +62,34 @@ public class hashing {
 
     }
 
+    @Test
+    @Order(3)
+    void checksum() throws IOException {
+
+        File ftbh = new File("tbh.txt");
+        String abspath = ftbh.getAbsolutePath();
+
+        String real_outcome = "abdc941476c8244ab0da7df485644f13ac0eb9cb662813a7a31a13b1b034312a  " + abspath;
+        hashing_test.checksum("abdc941476c8244ab0da7df485644f13ac0eb9cb662813a7a31a13b1b034312a", abspath, new JTextField());
+
+        File check = new File("sha256.txt");
+        List<String> fil = Files.readAllLines(check.toPath());
+        boolean eq = Objects.equals(real_outcome, fil.get(0));
+
+        System.out.println("------------------------ Hashing Test (Checksum) ---------------------------");
+        System.out.println("The File's Contents     : " + fil.get(0));
+        System.out.println("The Real Contents       : " + real_outcome);
+        System.out.println("Matched?                : " + eq);
+
+        assertTrue(eq);
+
+
+    }
+
     @AfterAll
     static void clean() {
         new File("tbh.txt").delete();
+        new File("sha256.txt").delete();
     }
 
 }
