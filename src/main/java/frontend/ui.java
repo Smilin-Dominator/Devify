@@ -17,12 +17,24 @@ import java.util.Objects;
 
 public class ui extends JFrame implements ActionListener {
 
+    // Colours
+    private final Color sea_green_crayola = Color.decode("#00FFC5");
+    private final Color celeste = Color.decode("#ADF5FF");
+    private final Color orange_red_crayola = Color.decode("#FF5E5B");
+    private final Color corn = Color.decode("#FFED66");
+    private final Color yellow_orange = Color.decode("#F4AC45");
+
+    // Backend Functions
     private final hash Hash = new hash();
     private final verify Verify = new verify();
     private final common Common = new common();
+
+    // JElements
     private final JFileChooser fileChooser;
     private final JTextField hashText;
     private final JPanel fileActions;
+
+    // Strings
     private String chosen_file;
 
     public ui() {
@@ -30,6 +42,7 @@ public class ui extends JFrame implements ActionListener {
         // Bare Bones
         setSize(485,800);
         setTitle("Devify - The Verifier!");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Main Panel
         JPanel master = new JPanel();
@@ -38,11 +51,13 @@ public class ui extends JFrame implements ActionListener {
         // Hash Text
         hashText = new JTextField();
         hashText.setHorizontalAlignment(JTextField.CENTER);
+        hashText.setBackground(sea_green_crayola);
         hashText.setText("Choose An Action!");
 
         // File Chooser
         fileChooser = new JFileChooser();
         fileChooser.addActionListener(this);
+        UIManager.put("Table.focusCellBackground", celeste);
 
         // Actions For The File
         fileActions = new JPanel();
@@ -58,23 +73,28 @@ public class ui extends JFrame implements ActionListener {
 
     }
 
-    public void showActions() {
+    private void showActions() {
 
         fileActions.removeAll();
         fileActions.revalidate();
 
-        fileActions.setBackground(Color.getHSBColor(174, 77, 77));
-        fileActions.setLayout(new BorderLayout(1, 1));
+        fileActions.setLayout(new BorderLayout(5, 1));
         hashText.setText("Choose An Action!");
 
         JButton genHash = new JButton("Generate Hash");
+        genHash.setBackground(corn);
         genHash.addActionListener(this);
+        genHash.setOpaque(true);
 
         JButton genChecksum = new JButton("Generate Checksum");
+        genChecksum.setBackground(orange_red_crayola);
         genChecksum.addActionListener(this);
+        genChecksum.setOpaque(true);
 
         JButton verifyChecksum = new JButton("Verify Checksum");
+        verifyChecksum.setBackground(yellow_orange);
         verifyChecksum.addActionListener(this);
+        verifyChecksum.setOpaque(true);
 
         fileActions.add(hashText, BorderLayout.PAGE_START);
         fileActions.add(genHash, BorderLayout.LINE_START);
@@ -86,7 +106,7 @@ public class ui extends JFrame implements ActionListener {
 
     }
 
-    public void hash_file() throws IOException {
+    private void hash_file() throws IOException {
         hashText.setText(Hash.file(chosen_file));
     }
 
