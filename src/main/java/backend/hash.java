@@ -39,14 +39,15 @@ public class hash {
     public void checksum(String hash, String path) {
 
         // Getting the path of the checksum hash
-        String directory = new File(path).getParentFile().getName();
-        Path path_to_cs = Paths.get(directory, "sha256.txt");
+        Path directory = Paths.get(path).getParent();
+        Path path_to_cs = Paths.get(directory.toString(), "sha256.txt");
 
         // Constructing the string
         String text = hash + "  " + path;
 
         // Writing to the file
         try {
+            assert path_to_cs.toFile().createNewFile();
             Files.writeString(path_to_cs, text);
         } catch (IOException e) {
             e.printStackTrace();

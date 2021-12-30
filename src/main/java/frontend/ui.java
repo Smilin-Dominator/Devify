@@ -104,7 +104,12 @@ public class ui extends JFrame implements ActionListener {
             }
         }
         else if (Objects.equals(ac_com, "Generate Checksum")) {
-            System.out.println("fff");
+            try {
+                hash_file();
+                Hash.checksum(hashText.getText(), chosen_file);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         }
         else if (Objects.equals(ac_com, "Verify Checksum")) {
             System.out.println("fff");
