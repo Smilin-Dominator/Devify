@@ -1,12 +1,24 @@
 package frontend;
 
-import javax.swing.JFrame;
+import javax.swing.*;
+import java.awt.*;
 
 public class ui extends JFrame {
 
     public ui() {
-        setSize(1080,1920);
+
+        // Bare Bones
+        setSize(450,800);
+        setTitle("Devify - The Verifier!");
         setVisible(true);
+
+        // Main Panel
+        JPanel master = new JPanel();
+        master.setLayout(new BorderLayout(0, 0));
+
+        // Addition
+        add(master);
+
     }
 
 }
