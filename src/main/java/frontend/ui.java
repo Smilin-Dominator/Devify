@@ -1,9 +1,13 @@
 package frontend;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
-public class ui extends JFrame {
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class ui extends JFrame implements ActionListener {
 
     public ui() {
 
@@ -19,6 +23,11 @@ public class ui extends JFrame {
         // Addition
         add(master);
 
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        System.out.println(e.getActionCommand());
     }
 
 }
