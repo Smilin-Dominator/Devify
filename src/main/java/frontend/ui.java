@@ -42,6 +42,7 @@ public class ui extends JFrame implements ActionListener {
         // Bare Bones
         setSize(485,800);
         setTitle("Devify - The Verifier!");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Main Panel
         JPanel master = new JPanel();
