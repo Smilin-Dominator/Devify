@@ -64,6 +64,14 @@ This release moved all the packages to 'com.smilin_dominator.devify.*'
 ### Fixed
 - None
 
+## [v1.1.5] - 13th December, 2021
+### Notes
+This release added test classes for Verify and Common
+### Features
+- New test classes!
+### Fixed
+- None
+
 [v1.0]: https://github.com/Smilin-Dominator/Devify/releases/tag/v1.0
 [v1.0.1]: https://github.com/Smilin-Dominator/Devify/compare/v1.0...v1.0.1
 [v1.1]: https://github.com/Smilin-Dominator/Devify/compare/v1.0.1...v1.1
@@ -71,3 +79,4 @@ This release moved all the packages to 'com.smilin_dominator.devify.*'
 [v1.1.2]: https://github.com/Smilin-Dominator/Devify/compare/v1.1.1...v1.1.2
 [v1.1.3]: https://github.com/Smilin-Dominator/Devify/compare/v1.1.2...v1.1.3
 [v1.1.4]: https://github.com/Smilin-Dominator/Devify/compare/v1.1.3...v1.1.4
+[v1.1.5]: https://github.com/Smilin-Dominator/Devify/compare/v1.1.4...v1.1.5
