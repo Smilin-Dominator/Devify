@@ -11,7 +11,7 @@ good backend functions!
 - Backend functions
   - Hashing, Verifying and other common functions are among them.
 ### Fixed
-  - The Checksum Function (It couldn't get the path correctly.)
+  - The Checksum Function, which couldn't get the path correctly. (085d484)
 
 
 ## [v1.0.1] - 12th December, 2021
@@ -53,7 +53,16 @@ This release was a code cleaning and maintenance release
 ### Features
 - Made the verify class useful
 ### Fixed
-- Issue of the filename not being detected in the absolute path
+- Issue of the filename not being detected in the absolute path (42376de)
+
+## [v1.1.4] - 13th December, 2021
+### Notes
+This release moved all the packages to 'com.smilin_dominator.devify.*'
+### Features
+- Package Names are now under 'com.smilin_dominator.devify'
+- Made all the entries in the 'Fixed' field in this Changelog have the SHA of the Commit for reference
+### Fixed
+- None
 
 [v1.0]: https://github.com/Smilin-Dominator/Devify/releases/tag/v1.0
 [v1.0.1]: https://github.com/Smilin-Dominator/Devify/compare/v1.0...v1.0.1
@@ -61,3 +70,4 @@ This release was a code cleaning and maintenance release
 [v1.1.1]: https://github.com/Smilin-Dominator/Devify/compare/v1.1...v1.1.1
 [v1.1.2]: https://github.com/Smilin-Dominator/Devify/compare/v1.1.1...v1.1.2
 [v1.1.3]: https://github.com/Smilin-Dominator/Devify/compare/v1.1.2...v1.1.3
+[v1.1.4]: https://github.com/Smilin-Dominator/Devify/compare/v1.1.3...v1.1.4
