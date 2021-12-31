@@ -1,4 +1,4 @@
-import backend.hash;
+import com.smilin_dominator.devify.backend.hash;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.AfterAll;

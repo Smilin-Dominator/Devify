@@ -1,7 +1,7 @@
-package frontend;
+package com.smilin_dominator.devify.frontend;
 
-import backend.hash;
-import backend.verify;
+import com.smilin_dominator.devify.backend.hash;
+import com.smilin_dominator.devify.backend.verify;
 
 import javax.swing.*;
 import java.awt.*;

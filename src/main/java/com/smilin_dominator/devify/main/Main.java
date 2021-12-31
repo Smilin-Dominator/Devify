@@ -1,6 +1,6 @@
-package main;
+package com.smilin_dominator.devify.main;
 
-import frontend.ui;
+import com.smilin_dominator.devify.frontend.ui;
 
 /** This imports the frontend and runs it, no biggie */
 public class Main {
