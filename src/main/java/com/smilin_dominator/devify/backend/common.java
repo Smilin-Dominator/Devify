@@ -1,4 +1,4 @@
-package backend;
+package com.smilin_dominator.devify.backend;
 
 import java.util.Objects;
 
