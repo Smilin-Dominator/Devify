@@ -62,9 +62,24 @@ public class verifying {
 
     }
 
+    @Test
+    void verifying_checksums() {
+
+        File ver = new File("verify_test.txt");
+        hash Hash = new hash();
+        JTextField test = new JTextField();
+        Hash.checksum("27f6b7d42d75634cd4f41d771f96b47a60df33029cfd517e3a62f51d42f47976", ver.getAbsolutePath(), test);
+        assert Objects.equals(test.getText(), "Success!");
+
+        Verify.verify_with_checksum(ver.getAbsolutePath(), test);
+        assert Objects.equals(test.getText(), "File Is The Same!");
+
+    }
+
     @AfterAll
     static void clean() {
         new File("verify_test.txt").delete();
+        new File("sha256.txt").delete();
     }
 
 }
