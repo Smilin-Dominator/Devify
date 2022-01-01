@@ -87,7 +87,7 @@ public class verify {
             }
 
         } catch (IOException ex) {
-            hashText.setText("There is no '" + hashText + "' in this DIR!");
+            hashText.setText("There is no '" + checksum + "' in this DIR!");
         }
     }
 
