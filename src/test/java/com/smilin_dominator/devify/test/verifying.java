@@ -2,9 +2,10 @@ package com.smilin_dominator.devify.test;
 
 import com.smilin_dominator.devify.backend.hash;
 import com.smilin_dominator.devify.backend.verify;
-
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
+import org.junit.FixMethodOrder;
+import org.junit.runners.MethodSorters;
 
 import javax.swing.*;
 import java.io.File;
@@ -15,16 +16,17 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class verifying {
 
     private final verify Verify = new verify();
 
     @Test
     void two_hashes() {
-
+        System.out.println(1);
         String hash1 = "bf3f1a53a871ca130b3a238b3de8c757c6d9ba9614e8fc73ddb23daf003a8cd9";
         String hash2 = "bf3f1a53a871ca130b3a238b3de8c757c6d9ba9614e8fc73ddb23daf003a8cd9";
         String hash3 = "bf3f1a53a871ca130b3a238b3de8c757614e8fc73ddb23daf003a8cd9";
@@ -39,6 +41,7 @@ public class verifying {
 
     @Test
     void string_hash() {
+        System.out.println(2);
 
         String string = "You Are A Donk!";
         String hash = "f6fa9bb646aed5a65fe22c770935bce17b501ad8f6d63bd6f30c001878f0f3e5";
@@ -51,6 +54,7 @@ public class verifying {
 
     @Test
     void verifying_file() throws IOException {
+        System.out.println(3);
 
         File ver = new File("verify_test.txt");
         assert ver.createNewFile();
@@ -66,15 +70,17 @@ public class verifying {
     }
 
     @Test
-    void verifying_checksums() {
+    void verifying_the_checksum() {
+        System.out.println(4);
 
         File ver = new File("verify_test.txt");
         hash Hash = new hash();
         JTextField test = new JTextField();
-        Hash.checksum("27f6b7d42d75634cd4f41d771f96b47a60df33029cfd517e3a62f51d42f47976", ver.getAbsolutePath(), test);
+        Hash.checksum("27f6b7d42d75634cd4f41d771f96b47a60df33029cfd517e3a62f51d42f47976", ver.getAbsolutePath(), "verify_hash.txt", test);
         assert Objects.equals(test.getText(), "Success!");
 
-        Verify.verify_with_checksum(ver.getAbsolutePath(), test);
+        Verify.verify_with_checksum(ver.getAbsolutePath(), "verify_hash.txt", test);
+        System.out.println(test.getText());
         assert Objects.equals(test.getText(), "File Is The Same!");
 
     }
@@ -82,7 +88,8 @@ public class verifying {
     @AfterAll
     static void clean() {
         new File("verify_test.txt").delete();
-        new File("sha256.txt").delete();
+        new File("verify_hash.txt").delete();
+
     }
 
 }
