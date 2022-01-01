@@ -47,6 +47,9 @@ public class ui extends JFrame implements ActionListener {
     /** The main status bar (stored in fileActions) */
     private final JTextField hashText;
 
+    /** The field where you specify the name of the checksum file */
+    private final JTextField checksumFile;
+
     /** The file actions panel which is visible only when a file is selected */
     private final JPanel fileActions;
 
@@ -70,6 +73,12 @@ public class ui extends JFrame implements ActionListener {
         hashText.setHorizontalAlignment(JTextField.CENTER);
         hashText.setBackground(sea_green_crayola);
         hashText.setText("Choose An Action!");
+
+        // Checksum File
+        checksumFile = new JTextField();
+        checksumFile.setHorizontalAlignment(JTextField.CENTER);
+        checksumFile.setText("sha256.txt");
+        checksumFile.setBackground(celeste);
 
         // File Chooser
         fileChooser = new JFileChooser();
@@ -122,6 +131,7 @@ public class ui extends JFrame implements ActionListener {
         fileActions.add(genHash, BorderLayout.LINE_START);
         fileActions.add(genChecksum, BorderLayout.CENTER);
         fileActions.add(verifyChecksum, BorderLayout.LINE_END);
+        fileActions.add(checksumFile, BorderLayout.PAGE_END);
 
         fileActions.repaint();
         fileActions.setVisible(true);
@@ -140,6 +150,7 @@ public class ui extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         String ac_com = e.getActionCommand();
+        String checksumfile = checksumFile.getText();
 
         // The File Choosing Section
         if (Objects.equals(ac_com, "ApproveSelection")) {
@@ -168,7 +179,7 @@ public class ui extends JFrame implements ActionListener {
             }
         }
         else if (Objects.equals(ac_com, "Verify Checksum")) {
-            Verify.verify_with_checksum(chosen_file, hashText);
+            Verify.verify_with_checksum(chosen_file, checksumfile, hashText);
         }
 
     }
