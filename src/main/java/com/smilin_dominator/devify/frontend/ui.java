@@ -172,7 +172,7 @@ public class ui extends JFrame implements ActionListener {
         else if (Objects.equals(ac_com, "Generate Checksum")) {
             try {
                 hash_file();
-                Hash.checksum(hashText.getText(), chosen_file, hashText);
+                Hash.checksum(hashText.getText(), chosen_file, checksumfile, hashText);
                 fileChooser.rescanCurrentDirectory();
             } catch (IOException ex) {
                 ex.printStackTrace();
