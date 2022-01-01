@@ -40,7 +40,6 @@ public class hash {
         // Exit if the Path does not exist
         if (!fil.exists()) {
             System.out.println("Path '" + fil.getAbsolutePath() + "' Does Not Exist!");
-            System.exit(1);
         }
 
         // Hashing the file itself
@@ -53,16 +52,17 @@ public class hash {
     }
 
     /**
-     * Writes a checksum ('sha256.txt') in the format "hash  filename"
+     * Writes a checksum with the filename of your choice in the format "hash  filename"
      * @param hash The SHA256 Hash of the File
      * @param path The path to the file
+     * @param checksum_file The filename of the checksum file
      * @param status The JTextField to write the status to
      */
-    public void checksum(String hash, String path, JTextField status) {
+    public void checksum(String hash, String path, String checksum_file, JTextField status) {
 
         // Getting the path of the checksum hash
         Path directory = Paths.get(path).getParent();
-        Path path_to_cs = Paths.get(directory.toString(), "sha256.txt");
+        Path path_to_cs = Paths.get(directory.toString(), checksum_file);
 
         // Constructing the string
         String text = hash + "  " + path;

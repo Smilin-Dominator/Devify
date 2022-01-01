@@ -2,9 +2,10 @@ package com.smilin_dominator.devify.test;
 
 import com.smilin_dominator.devify.backend.hash;
 import com.smilin_dominator.devify.backend.verify;
-
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
+import org.junit.FixMethodOrder;
+import org.junit.runners.MethodSorters;
 
 import javax.swing.*;
 import java.io.File;
@@ -15,9 +16,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class verifying {
 
     private final verify Verify = new verify();
@@ -66,15 +68,16 @@ public class verifying {
     }
 
     @Test
-    void verifying_checksums() {
+    void verifying_the_checksum() {
 
         File ver = new File("verify_test.txt");
         hash Hash = new hash();
         JTextField test = new JTextField();
-        Hash.checksum("27f6b7d42d75634cd4f41d771f96b47a60df33029cfd517e3a62f51d42f47976", ver.getAbsolutePath(), test);
+        Hash.checksum("27f6b7d42d75634cd4f41d771f96b47a60df33029cfd517e3a62f51d42f47976", ver.getAbsolutePath(), "verify_hash.txt", test);
         assert Objects.equals(test.getText(), "Success!");
 
-        Verify.verify_with_checksum(ver.getAbsolutePath(), test);
+        Verify.verify_with_checksum(ver.getAbsolutePath(), "verify_hash.txt", test);
+        System.out.println(test.getText());
         assert Objects.equals(test.getText(), "File Is The Same!");
 
     }
@@ -82,7 +85,8 @@ public class verifying {
     @AfterAll
     static void clean() {
         new File("verify_test.txt").delete();
-        new File("sha256.txt").delete();
+        new File("verify_hash.txt").delete();
+
     }
 
 }
