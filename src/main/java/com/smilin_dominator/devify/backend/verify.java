@@ -52,9 +52,10 @@ public class verify {
     /**
      * This checks the checksum file and verifies the integrity of the file
      * @param path_to_file The path to the file you want to verify
+     * @param checksum The filename of the Checksum File
      * @param hashText The main status bar
      */
-    public void verify_with_checksum(String path_to_file, JTextField hashText) {
+    public void verify_with_checksum(String path_to_file, String checksum, JTextField hashText) {
         try {
 
             // Create a class for the common functions
@@ -62,7 +63,7 @@ public class verify {
 
             // Make 'Path' objects
             Path dir = Paths.get(path_to_file).getParent();
-            Path shafile = Paths.get(dir.toString(), "sha256.txt");
+            Path shafile = Paths.get(dir.toString(), checksum);
 
             // Get the first line of the file
             List<String> contents = Files.readAllLines(shafile);
@@ -86,7 +87,7 @@ public class verify {
             }
 
         } catch (IOException ex) {
-            hashText.setText("There is no 'sha256.txt' in this DIR!");
+            hashText.setText("There is no '" + hashText + "' in this DIR!");
         }
     }
 
