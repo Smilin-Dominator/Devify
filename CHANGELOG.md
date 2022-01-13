@@ -81,6 +81,14 @@ This release added the ability to read a checksum file with a filename of your c
 - The test class for Verify (9b237e8)
 - The test class for Hashing (8054858)
 
+## [v1.2.1] - 13th January, 2022
+### Notes
+I changed the license to a GNU AGPL v3 License. 
+### Features
+- Copyright String On The Top Of All Source Code
+### Fixed
+- None
+
 [v1.0]: https://github.com/Smilin-Dominator/Devify/releases/tag/v1.0
 [v1.0.1]: https://github.com/Smilin-Dominator/Devify/compare/v1.0...v1.0.1
 [v1.1]: https://github.com/Smilin-Dominator/Devify/compare/v1.0.1...v1.1
@@ -90,3 +98,4 @@ This release added the ability to read a checksum file with a filename of your c
 [v1.1.4]: https://github.com/Smilin-Dominator/Devify/compare/v1.1.3...v1.1.4
 [v1.1.5]: https://github.com/Smilin-Dominator/Devify/compare/v1.1.4...v1.1.5
 [v1.2]: https://github.com/Smilin-Dominator/Devify/compare/v1.1.5..v1.2
+[v1.2.1]: https://github.com/Smilin-Dominator/Devify/compare/v1.2..v1.2.1
