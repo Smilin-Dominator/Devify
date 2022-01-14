@@ -89,6 +89,18 @@ I changed the license to a GNU AGPL v3 License.
 ### Fixed
 - None
 
+## [v1.2.2] - 14th January, 2022
+### Notes
+I added a class that can return Fonts and ImageIcons from files that're in the Jar File
+### Features
+- New 'resources' class in the backend
+  - font -> Returns a Font object
+  - image -> Returns an ImageIcon object
+- Gradle 'run' Task
+  - Now you can type 'gradle run' and it'll launch the class; As well as 'gradle runShadow' which uses shadowJar
+### Fixed
+- None
+
 [v1.0]: https://github.com/Smilin-Dominator/Devify/releases/tag/v1.0
 [v1.0.1]: https://github.com/Smilin-Dominator/Devify/compare/v1.0...v1.0.1
 [v1.1]: https://github.com/Smilin-Dominator/Devify/compare/v1.0.1...v1.1
@@ -99,3 +111,4 @@ I changed the license to a GNU AGPL v3 License.
 [v1.1.5]: https://github.com/Smilin-Dominator/Devify/compare/v1.1.4...v1.1.5
 [v1.2]: https://github.com/Smilin-Dominator/Devify/compare/v1.1.5..v1.2
 [v1.2.1]: https://github.com/Smilin-Dominator/Devify/compare/v1.2..v1.2.1
+[v1.2.2]: https://github.com/Smilin-Dominator/Devify/compare/v1.2.1...v1.2.2
