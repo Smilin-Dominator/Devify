@@ -18,6 +18,7 @@
 package com.smilin_dominator.devify.frontend;
 
 import com.smilin_dominator.devify.backend.hash;
+import com.smilin_dominator.devify.backend.resources;
 import com.smilin_dominator.devify.backend.verify;
 
 import javax.swing.*;
@@ -49,6 +50,9 @@ public class ui extends JFrame implements ActionListener {
     private final Color yellow_orange = Color.decode("#F4AC45");
 
     /*------------------- My Packages  ---------------*/
+
+    /** The resources class (backend.resources) */
+    private final resources Resources = new resources();
 
     /** The hashing class (backend.hash) */
     private final hash Hash = new hash();
