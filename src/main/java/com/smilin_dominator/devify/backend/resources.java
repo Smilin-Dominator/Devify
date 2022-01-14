@@ -1,6 +1,9 @@
 package com.smilin_dominator.devify.backend;
 
 import javax.swing.ImageIcon;
+import java.awt.*;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Objects;
 
 public class resources {
@@ -16,6 +19,24 @@ public class resources {
     public ImageIcon image(String subdir, String name) {
         String path = "/%s/%s".formatted(subdir, name);
         return new ImageIcon(Objects.requireNonNull(getClass().getResource(path)));
+    }
+
+    /**
+     * This returns a font as a Font Object, and crashes if no such font is found. For example, if you wanted to
+     * get the font 'resources/fonts/Dude.ttf', you set fontName to 'Dude.ttf'
+     * @param fontName The filename of the font
+     * @return A Font object
+     */
+    public Font font(String fontName) {
+        Font output = Font.getFont(Font.SERIF); // placeholder
+        String path = "/fonts/" + fontName;
+        InputStream font = Objects.requireNonNull(getClass().getResourceAsStream(path));
+        try {
+            output = Font.createFont(Font.TRUETYPE_FONT, font);
+        } catch (IOException | FontFormatException e) {
+            e.printStackTrace();
+        }
+        return output;
     }
 
 }
