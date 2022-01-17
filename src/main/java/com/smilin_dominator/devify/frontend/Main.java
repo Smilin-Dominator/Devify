@@ -5,9 +5,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /** This is the main UI class. It returns the logo and a choice of hashing or verifying */
-public class main extends JFrame implements ActionListener {
+public class Main extends JFrame implements ActionListener {
 
-     public main() {
+     public Main() {
 
           // Main Options
           setSize(485,800);
@@ -24,6 +24,10 @@ public class main extends JFrame implements ActionListener {
      }
 
      public void actionPerformed(ActionEvent e) {
+
+     }
+
+     public static void main(String[] args) {
 
      }
 
