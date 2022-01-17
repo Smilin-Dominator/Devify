@@ -11,7 +11,7 @@ data/
 *.path
 out/
 nbproject/private/*
-
+*.iml
 .gradle/
 gradle-app.setting
 !gradle-wrapper.jar
