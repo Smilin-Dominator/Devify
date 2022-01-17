@@ -8,8 +8,8 @@ import java.awt.event.ActionListener;
 /** This is the main UI class. It returns the logo and a choice of hashing or verifying */
 public class Main extends JFrame implements ActionListener {
 
-     private final hash HashClass = new hash();
-     private final verify VerifyClass = new verify();
+     private final Hash hashClass = new Hash();
+     private final Verify verifyClass = new Verify();
 
      public Main() {
 
@@ -45,8 +45,8 @@ public class Main extends JFrame implements ActionListener {
      public void actionPerformed(ActionEvent e) {
           String com = e.getActionCommand();
           switch (com) {
-               case "Verify" -> VerifyClass.run();
-               case "Hash" -> HashClass.run();
+               case "Verify" -> verifyClass.run();
+               case "Hash" -> hashClass.run();
           }
           this.dispose();
      }

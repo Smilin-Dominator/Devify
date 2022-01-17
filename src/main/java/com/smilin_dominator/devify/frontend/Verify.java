@@ -21,7 +21,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class verify extends JFrame implements ActionListener {
+public class Verify extends JFrame implements ActionListener {
 
     public void run() {
         setVisible(true);

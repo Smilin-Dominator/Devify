@@ -21,7 +21,16 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class hash extends JFrame implements ActionListener {
+public class Hash extends JFrame implements ActionListener {
+
+    public Hash() {
+
+        // Main Options
+        setSize(485,800);
+        setTitle("Devify - The Verifier!");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+    }
 
     public void run() {
         setVisible(true);
