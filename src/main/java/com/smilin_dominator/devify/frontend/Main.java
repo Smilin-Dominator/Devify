@@ -8,8 +8,8 @@ import java.awt.event.ActionListener;
 /** This is the main UI class. It returns the logo and a choice of hashing or verifying */
 public class Main extends JFrame implements ActionListener {
 
-     private hash HashClass = new hash();
-     private verify VerifyClass = new verify();
+     private final hash HashClass = new hash();
+     private final verify VerifyClass = new verify();
 
      public Main() {
 
