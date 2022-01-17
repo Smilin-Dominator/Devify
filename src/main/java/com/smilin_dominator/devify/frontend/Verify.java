@@ -23,6 +23,15 @@ import java.awt.event.ActionListener;
 
 public class Verify extends JFrame implements ActionListener {
 
+    public Verify() {
+
+        // Main Options
+        setSize(485,800);
+        setTitle("Devify - Verifying!");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+    }
+
     public void run() {
         setVisible(true);
     }

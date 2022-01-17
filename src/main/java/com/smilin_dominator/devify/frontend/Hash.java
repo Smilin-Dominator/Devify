@@ -27,7 +27,7 @@ public class Hash extends JFrame implements ActionListener {
 
         // Main Options
         setSize(485,800);
-        setTitle("Devify - The Verifier!");
+        setTitle("Devify - Hashing!");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     }
