@@ -18,10 +18,15 @@
 package com.smilin_dominator.devify.frontend;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Hash extends JFrame implements ActionListener {
+
+    private final JTextField filePath;
+    private final JFileChooser fileChooser;
+    private final JDialog fileChoosingDialog;
 
     public Hash() {
 
@@ -30,6 +35,33 @@ public class Hash extends JFrame implements ActionListener {
         setTitle("Devify - Hashing!");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        // Main Container
+        JPanel main = new JPanel();
+        main.setLayout(new BoxLayout(main, BoxLayout.Y_AXIS));
+
+        // The File Selection
+        JPanel FileContainer = new JPanel();
+        FileContainer.setLayout(new GridLayout(1, 2));
+        filePath = new JTextField("Paste The Path Here Or Click The Button On The Right!");
+
+        JButton fileChoosingButton = new JButton("Select A File");
+        fileChoosingButton.addActionListener(this);
+
+        fileChoosingDialog = new JDialog();
+        fileChoosingDialog.setSize(400, 600);
+        fileChoosingDialog.setLayout(new GridLayout(1, 1));
+        fileChoosingDialog.setVisible(false);
+
+        fileChooser = new JFileChooser();
+        fileChooser.addActionListener(this);
+
+        // Final Stage
+        fileChoosingDialog.add(fileChooser);
+        FileContainer.add(filePath);
+        FileContainer.add(fileChoosingButton);
+        main.add(FileContainer);
+        this.add(main);
+
     }
 
     public void run() {
@@ -37,7 +69,12 @@ public class Hash extends JFrame implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-
+        String com = e.getActionCommand();
+        switch (com) {
+            case "Select A File":
+                fileChoosingDialog.setVisible(true);
+                break;
+        }
     }
 
 }
