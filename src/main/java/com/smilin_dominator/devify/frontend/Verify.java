@@ -45,8 +45,6 @@ public class Verify extends JFrame implements ActionListener {
         HashMap<String, String> FileHashMap = VerifyClass.getFiles(checksumFileName);
 
         int rowCount = FileHashMap.size() + 1;
-        GridLayout rowLayout = new GridLayout(rowCount, 4);
-        verifyWithChecksumFile.setLayout(rowLayout);
 
         JLabel currentFileShow = new JLabel("Current File");
         currentFileShow.setOpaque(true);
@@ -64,12 +62,10 @@ public class Verify extends JFrame implements ActionListener {
         sameFileShow.setOpaque(true);
         sameFileShow.setBackground(Color.white);
 
-        verifyWithChecksumFile.add(currentFileShow);
-        verifyWithChecksumFile.add(previousHashShow);
-        verifyWithChecksumFile.add(currentHashShow);
-        verifyWithChecksumFile.add(sameFileShow);
-
         for (String file : FileHashMap.keySet()) {
+
+            JPanel row = new JPanel();
+            row.setLayout(new SpringLayout());
 
             String newHash = HashClass.file(file);
             String lastHash = FileHashMap.get(file);
@@ -90,10 +86,20 @@ public class Verify extends JFrame implements ActionListener {
             sameFile.setOpaque(true);
             sameFile.setBackground(Color.white);
 
-            verifyWithChecksumFile.add(currentFile);
-            verifyWithChecksumFile.add(previousHash);
-            verifyWithChecksumFile.add(currentHash);
-            verifyWithChecksumFile.add(sameFile);
+            row.add(currentFileShow);
+            row.add(currentFile);
+
+            row.add(previousHashShow);
+            row.add(previousHash);
+
+            row.add(currentHashShow);
+            row.add(currentHash);
+
+            row.add(sameFileShow);
+            row.add(sameFile);
+
+            SpringUtilities.makeCompactGrid(row, 4, 2, 1, 1, 1, 1);
+            verifyWithChecksumFile.add(row);
 
         }
 
@@ -105,7 +111,7 @@ public class Verify extends JFrame implements ActionListener {
     public Verify() {
 
         // Main Options
-        setSize(485,800);
+        setSize(600,800);
         setTitle("Devify - Verifying!");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         verifyWithChecksumFile.setVisible(false);
