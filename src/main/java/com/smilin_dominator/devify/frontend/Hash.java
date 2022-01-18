@@ -29,6 +29,7 @@ public class Hash extends JFrame implements ActionListener {
     private final JTextField filePath;
     private final JFileChooser fileChooser;
     private final JDialog fileChoosingDialog;
+    private final JPanel mainFunctions;
 
     private final hash HashClass = new hash();
 
@@ -51,6 +52,17 @@ public class Hash extends JFrame implements ActionListener {
         JButton fileChoosingButton = new JButton("Select A File");
         fileChoosingButton.addActionListener(this);
 
+        // The Main Functions
+        mainFunctions = new JPanel();
+        mainFunctions.setLayout(new BorderLayout());
+        mainFunctions.setVisible(false);
+
+        JPanel buttonContainer = new JPanel();
+        buttonContainer.setLayout(new GridLayout(1, 2));
+
+        JButton showHash = new JButton("Calculate The Hash");
+        JButton generateChecksums = new JButton("Write The Checksum");
+
         // The Hidden File Selection Dialog
         fileChoosingDialog = new JDialog();
         fileChoosingDialog.setSize(400, 600);
@@ -63,10 +75,15 @@ public class Hash extends JFrame implements ActionListener {
         // Final Stage
         fileChoosingDialog.add(fileChooser);
 
+        buttonContainer.add(showHash);
+        buttonContainer.add(generateChecksums);
+        mainFunctions.add(buttonContainer);
+
         FileContainer.add(filePath);
         FileContainer.add(fileChoosingButton);
 
         main.add(FileContainer);
+        main.add(mainFunctions);
 
         this.add(main);
 
@@ -88,9 +105,13 @@ public class Hash extends JFrame implements ActionListener {
             case "ApproveSelection" -> {
                 filePath.setText(fileChooser.getSelectedFile().getAbsolutePath());
                 fileChoosingDialog.setVisible(false);
+                mainFunctions.setVisible(true);
             }
 
-            case "CancelSelection" -> fileChoosingDialog.setVisible(false);
+            case "CancelSelection" -> {
+                fileChoosingDialog.setVisible(false);
+                mainFunctions.setVisible(false);
+            }
 
         }
     }
