@@ -17,6 +17,8 @@
 */
 package com.smilin_dominator.devify.frontend;
 
+import com.smilin_dominator.devify.backend.hash;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -27,6 +29,8 @@ public class Hash extends JFrame implements ActionListener {
     private final JTextField filePath;
     private final JFileChooser fileChooser;
     private final JDialog fileChoosingDialog;
+
+    private final hash HashClass = new hash();
 
     public Hash() {
 
@@ -39,7 +43,7 @@ public class Hash extends JFrame implements ActionListener {
         JPanel main = new JPanel();
         main.setLayout(new BoxLayout(main, BoxLayout.Y_AXIS));
 
-        // The File Selection
+        // The File Selection Container
         JPanel FileContainer = new JPanel();
         FileContainer.setLayout(new GridLayout(1, 2));
         filePath = new JTextField("Paste The Path Here Or Click The Button On The Right!");
@@ -47,6 +51,7 @@ public class Hash extends JFrame implements ActionListener {
         JButton fileChoosingButton = new JButton("Select A File");
         fileChoosingButton.addActionListener(this);
 
+        // The Hidden File Selection Dialog
         fileChoosingDialog = new JDialog();
         fileChoosingDialog.setSize(400, 600);
         fileChoosingDialog.setLayout(new GridLayout(1, 1));
@@ -57,9 +62,12 @@ public class Hash extends JFrame implements ActionListener {
 
         // Final Stage
         fileChoosingDialog.add(fileChooser);
+
         FileContainer.add(filePath);
         FileContainer.add(fileChoosingButton);
+
         main.add(FileContainer);
+
         this.add(main);
 
     }
