@@ -21,12 +21,56 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
+import java.util.Objects;
+
+import com.smilin_dominator.devify.backend.verify;
+import com.smilin_dominator.devify.backend.hash;
 
 public class Verify extends JFrame implements ActionListener {
+
+    private final verify VerifyClass = new verify();
+    private final hash HashClass = new hash();
 
     private final JDialog fileSelectionDialog = new JDialog();
     private final JFileChooser fileChooser = new JFileChooser();
     private final JTextField pathToChecksum = new JTextField("Paste Or Browse");
+    private final JTextField status = new JTextField();
+
+    private final JPanel verifyWithChecksumFile = new JPanel();
+
+    private void CheckFiles(String path, String checksumFileName) {
+
+        verifyWithChecksumFile.removeAll();
+        verifyWithChecksumFile.revalidate();
+
+        HashMap<String, String> FileHashMap = VerifyClass.getFiles(path, checksumFileName, status);
+        for (String file : FileHashMap.keySet()) {
+
+            JPanel row = new JPanel();
+            row.setLayout(new BoxLayout(row, BoxLayout.X_AXIS));
+
+            String newHash = HashClass.file(file);
+            String lastHash = FileHashMap.get(file);
+
+            JLabel currentFile = new JLabel(file);
+            JLabel previousHash = new JLabel(lastHash);
+            JLabel currentHash = new JLabel(newHash);
+            JLabel sameFile = new JLabel(String.valueOf(Objects.equals(newHash, lastHash)));
+
+            row.add(currentFile);
+            row.add(previousHash);
+            row.add(currentHash);
+            row.add(sameFile);
+
+            verifyWithChecksumFile.add(row);
+
+        }
+
+        verifyWithChecksumFile.repaint();
+        verifyWithChecksumFile.setVisible(true);
+
+    }
 
     public Verify() {
 
@@ -34,6 +78,7 @@ public class Verify extends JFrame implements ActionListener {
         setSize(485,800);
         setTitle("Devify - Verifying!");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        verifyWithChecksumFile.setVisible(false);
 
         // Main Panel
         JPanel main = new JPanel();
@@ -56,6 +101,7 @@ public class Verify extends JFrame implements ActionListener {
         selection.add(pathToChecksum);
         selection.add(selectButton);
         main.add(selection);
+        main.add(verifyWithChecksumFile);
         this.add(main);
 
     }
@@ -78,6 +124,7 @@ public class Verify extends JFrame implements ActionListener {
             case "ApproveSelection" -> {
                 pathToChecksum.setText(fileChooser.getSelectedFile().getAbsolutePath());
                 fileSelectionDialog.setVisible(false);
+                CheckFiles(path, pathToChecksum.getText());
             }
 
             case "CancelSelection" -> {
