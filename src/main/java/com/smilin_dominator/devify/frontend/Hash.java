@@ -71,9 +71,22 @@ public class Hash extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String com = e.getActionCommand();
         switch (com) {
+
+            // Sent by fileChoosingButton
             case "Select A File":
                 fileChoosingDialog.setVisible(true);
                 break;
+
+            // Sent by fileChooser
+            case "ApproveSelection":
+                filePath.setText(fileChooser.getSelectedFile().getAbsolutePath());
+                fileChoosingDialog.setVisible(false);
+                break;
+
+            case "CancelSelection":
+                fileChoosingDialog.setVisible(false);
+                break;
+
         }
     }
 
