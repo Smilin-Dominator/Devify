@@ -35,7 +35,6 @@ public class Verify extends JFrame implements ActionListener {
     private final JDialog fileSelectionDialog = new JDialog();
     private final JFileChooser fileChooser = new JFileChooser();
     private final JTextField pathToChecksum = new JTextField("Paste Or Browse");
-    private final JTextField status = new JTextField();
 
     private final JPanel verifyWithChecksumFile = new JPanel();
 
@@ -43,34 +42,58 @@ public class Verify extends JFrame implements ActionListener {
 
         verifyWithChecksumFile.removeAll();
         verifyWithChecksumFile.revalidate();
-
         HashMap<String, String> FileHashMap = VerifyClass.getFiles(checksumFileName);
-        for (String file : FileHashMap.keySet()) {
 
-            JPanel row = new JPanel();
-            row.setLayout(new GridLayout(1, 4));
+        int rowCount = FileHashMap.size() + 1;
+        GridLayout rowLayout = new GridLayout(rowCount, 4);
+        verifyWithChecksumFile.setLayout(rowLayout);
+
+        JLabel currentFileShow = new JLabel("Current File");
+        currentFileShow.setOpaque(true);
+        currentFileShow.setBackground(Color.LIGHT_GRAY);
+
+        JLabel previousHashShow = new JLabel("Hash In Checksum");
+        previousHashShow.setOpaque(true);
+        previousHashShow.setBackground(Color.white);
+
+        JLabel currentHashShow = new JLabel("New Hash");
+        currentHashShow.setOpaque(true);
+        currentHashShow.setBackground(Color.LIGHT_GRAY);
+
+        JLabel sameFileShow = new JLabel("Same?");
+        sameFileShow.setOpaque(true);
+        sameFileShow.setBackground(Color.white);
+
+        verifyWithChecksumFile.add(currentFileShow);
+        verifyWithChecksumFile.add(previousHashShow);
+        verifyWithChecksumFile.add(currentHashShow);
+        verifyWithChecksumFile.add(sameFileShow);
+
+        for (String file : FileHashMap.keySet()) {
 
             String newHash = HashClass.file(file);
             String lastHash = FileHashMap.get(file);
 
             JLabel currentFile = new JLabel(file);
+            currentFile.setOpaque(true);
             currentFile.setBackground(Color.LIGHT_GRAY);
 
             JLabel previousHash = new JLabel(lastHash);
+            previousHash.setOpaque(true);
             previousHash.setBackground(Color.white);
 
             JLabel currentHash = new JLabel(newHash);
+            currentHash.setOpaque(true);
             currentHash.setBackground(Color.LIGHT_GRAY);
 
             JLabel sameFile = new JLabel(String.valueOf(Objects.equals(newHash, lastHash)));
+            sameFile.setOpaque(true);
             sameFile.setBackground(Color.white);
 
-            row.add(currentFile);
-            row.add(previousHash);
-            row.add(currentHash);
-            row.add(sameFile);
-
-            verifyWithChecksumFile.add(row);
+            verifyWithChecksumFile.add(currentFile);
+            verifyWithChecksumFile.add(previousHash);
+            verifyWithChecksumFile.add(currentHash);
+            verifyWithChecksumFile.add(sameFile);
 
         }
 
