@@ -47,9 +47,8 @@ public class hash {
      * in *NIX and DOS respectively
      * @param path The path to the file
      * @return The SHA256 Hash of the File
-     * @throws IOException If there's an error while reading the file
      */
-    public String file(String path) throws IOException {
+    public String file(String path) {
 
         // Creating A File With The Path
         File fil = new File(path);
@@ -60,9 +59,14 @@ public class hash {
         }
 
         // Hashing the file itself
-        String hash = DigestUtils.sha256Hex(new FileInputStream(fil));
-        System.out.println("Chosen File : " + path);
-        System.out.println("Hash        : " + hash);
+        String hash = "";
+        try {
+            hash = DigestUtils.sha256Hex(new FileInputStream(fil));
+            System.out.println("Chosen File : " + path);
+            System.out.println("Hash        : " + hash);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         return hash;
 
