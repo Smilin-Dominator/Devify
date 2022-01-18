@@ -35,6 +35,7 @@ public class Verify extends JFrame implements ActionListener {
     private final JDialog fileSelectionDialog = new JDialog();
     private final JFileChooser fileChooser = new JFileChooser();
     private final JTextField pathToChecksum = new JTextField("Paste Or Browse");
+    private final JButton confirmVerification = new JButton("Verify");
 
     private final JPanel verifyWithChecksumFile = new JPanel();
 
@@ -121,6 +122,7 @@ public class Verify extends JFrame implements ActionListener {
         selectButton.addActionListener(this);
 
         // File Choosing Dialog
+        confirmVerification.addActionListener(this);
         fileChooser.addActionListener(this);
 
         fileSelectionDialog.setVisible(false);
@@ -131,6 +133,7 @@ public class Verify extends JFrame implements ActionListener {
         selection.add(pathToChecksum);
         selection.add(selectButton);
         main.add(selection);
+        main.add(confirmVerification);
         main.add(verifyWithChecksumFile);
         this.add(main);
 
@@ -144,6 +147,11 @@ public class Verify extends JFrame implements ActionListener {
         String com = e.getActionCommand();
         String path = pathToChecksum.getText();
         switch (com) {
+
+            // sent by confirmVerification
+            case "Verify" -> {
+                CheckFiles(path);
+            }
 
             // Sent by selectButton
             case "Select File" -> {
