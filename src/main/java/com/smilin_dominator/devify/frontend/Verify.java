@@ -44,25 +44,27 @@ public class Verify extends JFrame implements ActionListener {
         verifyWithChecksumFile.revalidate();
         HashMap<String, String> FileHashMap = VerifyClass.getFiles(checksumFileName);
 
-        int rowCount = FileHashMap.size() + 1;
-
-        JLabel currentFileShow = new JLabel("Current File");
-        currentFileShow.setOpaque(true);
-        currentFileShow.setBackground(Color.LIGHT_GRAY);
-
-        JLabel previousHashShow = new JLabel("Hash In Checksum");
-        previousHashShow.setOpaque(true);
-        previousHashShow.setBackground(Color.white);
-
-        JLabel currentHashShow = new JLabel("New Hash");
-        currentHashShow.setOpaque(true);
-        currentHashShow.setBackground(Color.LIGHT_GRAY);
-
-        JLabel sameFileShow = new JLabel("Same?");
-        sameFileShow.setOpaque(true);
-        sameFileShow.setBackground(Color.white);
-
         for (String file : FileHashMap.keySet()) {
+
+            // -------------------------------- Labels --------------------------- //
+
+            JLabel currentFileShow = new JLabel("Current File");
+            currentFileShow.setOpaque(true);
+            currentFileShow.setBackground(Color.LIGHT_GRAY);
+
+            JLabel previousHashShow = new JLabel("Hash In Checksum");
+            previousHashShow.setOpaque(true);
+            previousHashShow.setBackground(Color.white);
+
+            JLabel currentHashShow = new JLabel("New Hash");
+            currentHashShow.setOpaque(true);
+            currentHashShow.setBackground(Color.LIGHT_GRAY);
+
+            JLabel sameFileShow = new JLabel("Same?");
+            sameFileShow.setOpaque(true);
+            sameFileShow.setBackground(Color.white);
+
+            // -------------------------------- Data --------------------------- //
 
             JPanel row = new JPanel();
             row.setLayout(new SpringLayout());
