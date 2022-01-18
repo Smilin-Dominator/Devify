@@ -30,6 +30,8 @@ public class Hash extends JFrame implements ActionListener {
     private final JFileChooser fileChooser;
     private final JDialog fileChoosingDialog;
     private final JPanel mainFunctions;
+    private final JTextField statusBar;
+    private final JTextField checksumFileName;
 
     private final hash HashClass = new hash();
 
@@ -57,11 +59,17 @@ public class Hash extends JFrame implements ActionListener {
         mainFunctions.setLayout(new BorderLayout());
         mainFunctions.setVisible(false);
 
+        statusBar = new JTextField("I'm The Status Bar!");
+        checksumFileName = new JTextField("sha256.txt");
+
         JPanel buttonContainer = new JPanel();
         buttonContainer.setLayout(new GridLayout(1, 2));
 
         JButton showHash = new JButton("Calculate The Hash");
+        showHash.addActionListener(this);
+
         JButton generateChecksums = new JButton("Write The Checksum");
+        generateChecksums.addActionListener(this);
 
         // The Hidden File Selection Dialog
         fileChoosingDialog = new JDialog();
@@ -77,7 +85,9 @@ public class Hash extends JFrame implements ActionListener {
 
         buttonContainer.add(showHash);
         buttonContainer.add(generateChecksums);
-        mainFunctions.add(buttonContainer);
+        mainFunctions.add(statusBar, BorderLayout.NORTH);
+        mainFunctions.add(buttonContainer, BorderLayout.CENTER);
+        mainFunctions.add(checksumFileName, BorderLayout.PAGE_END);
 
         FileContainer.add(filePath);
         FileContainer.add(fileChoosingButton);
@@ -96,6 +106,7 @@ public class Hash extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String com = e.getActionCommand();
         String path = filePath.getText();
+        String checksumFile = checksumFileName.getText();
         switch (com) {
 
             // Sent by fileChoosingButton
@@ -117,11 +128,13 @@ public class Hash extends JFrame implements ActionListener {
             // Sent by mainFunctions
             case "Calculate The Hash" -> {
                 String hash = HashClass.file(path);
+                statusBar.setText(hash);
             }
 
             case "Write The Checksum" -> {
                 String hash = HashClass.file(path);
-                HashClass.checksum(hash, path, "", new JTextField());
+                HashClass.checksum(hash, path, checksumFile, statusBar);
+                fileChooser.rescanCurrentDirectory();
             }
 
         }
