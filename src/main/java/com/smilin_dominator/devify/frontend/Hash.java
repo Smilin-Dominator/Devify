@@ -95,6 +95,7 @@ public class Hash extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         String com = e.getActionCommand();
+        String path = filePath.getText();
         switch (com) {
 
             // Sent by fileChoosingButton
@@ -111,6 +112,16 @@ public class Hash extends JFrame implements ActionListener {
             case "CancelSelection" -> {
                 fileChoosingDialog.setVisible(false);
                 mainFunctions.setVisible(false);
+            }
+
+            // Sent by mainFunctions
+            case "Calculate The Hash" -> {
+                String hash = HashClass.file(path);
+            }
+
+            case "Write The Checksum" -> {
+                String hash = HashClass.file(path);
+                HashClass.checksum(hash, path, "", new JTextField());
             }
 
         }
