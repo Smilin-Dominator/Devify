@@ -114,7 +114,7 @@ public class verify {
         }
     }
 
-    public HashMap<String,String> getFiles(String pathToFile, String checksumFileName, JTextField statusBar) {
+    public HashMap<String,String> getFiles(String checksumFileName) {
 
         // Make 'Path' objects
         Path checksumFile = Paths.get(checksumFileName);

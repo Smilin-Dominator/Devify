@@ -39,24 +39,31 @@ public class Verify extends JFrame implements ActionListener {
 
     private final JPanel verifyWithChecksumFile = new JPanel();
 
-    private void CheckFiles(String path, String checksumFileName) {
+    private void CheckFiles(String checksumFileName) {
 
         verifyWithChecksumFile.removeAll();
         verifyWithChecksumFile.revalidate();
 
-        HashMap<String, String> FileHashMap = VerifyClass.getFiles(path, checksumFileName, status);
+        HashMap<String, String> FileHashMap = VerifyClass.getFiles(checksumFileName);
         for (String file : FileHashMap.keySet()) {
 
             JPanel row = new JPanel();
-            row.setLayout(new BoxLayout(row, BoxLayout.X_AXIS));
+            row.setLayout(new GridLayout(1, 4));
 
             String newHash = HashClass.file(file);
             String lastHash = FileHashMap.get(file);
 
             JLabel currentFile = new JLabel(file);
+            currentFile.setBackground(Color.LIGHT_GRAY);
+
             JLabel previousHash = new JLabel(lastHash);
+            previousHash.setBackground(Color.white);
+
             JLabel currentHash = new JLabel(newHash);
+            currentHash.setBackground(Color.LIGHT_GRAY);
+
             JLabel sameFile = new JLabel(String.valueOf(Objects.equals(newHash, lastHash)));
+            sameFile.setBackground(Color.white);
 
             row.add(currentFile);
             row.add(previousHash);
@@ -124,7 +131,7 @@ public class Verify extends JFrame implements ActionListener {
             case "ApproveSelection" -> {
                 pathToChecksum.setText(fileChooser.getSelectedFile().getAbsolutePath());
                 fileSelectionDialog.setVisible(false);
-                CheckFiles(path, pathToChecksum.getText());
+                CheckFiles(pathToChecksum.getText());
             }
 
             case "CancelSelection" -> {
