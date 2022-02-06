@@ -124,13 +124,15 @@ public class Verify extends JFrame implements ActionListener {
 
         // Selection Panel
         JPanel selection = new JPanel();
-        selection.setLayout(new GridLayout(1, 2));
+        selection.setLayout(new GridLayout(1, 3));
+
         JButton selectButton = new JButton("Select File");
         selectButton.addActionListener(this);
 
-        // File Choosing Dialog
         JButton confirmVerification = new JButton("Verify");
         confirmVerification.addActionListener(this);
+
+        // File Choosing Dialog
         fileChooser.addActionListener(this);
 
         fileSelectionDialog.setVisible(false);
@@ -140,9 +142,11 @@ public class Verify extends JFrame implements ActionListener {
         // Final
         selection.add(pathToChecksum);
         selection.add(selectButton);
+        selection.add(confirmVerification);
+
         main.add(selection);
-        main.add(confirmVerification);
         main.add(verifyWithChecksumFile);
+
         this.add(main);
 
     }
