@@ -38,9 +38,9 @@ public class Hash extends JFrame implements ActionListener {
     public Hash() {
 
         // Main Options
-        setSize(500,800);
+        setSize(800,1000);
         setTitle("Devify - Hashing!");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         // Main Container
         JPanel main = new JPanel();
@@ -48,7 +48,7 @@ public class Hash extends JFrame implements ActionListener {
 
         // The File Selection Container
         JPanel FileContainer = new JPanel();
-        FileContainer.setLayout(new GridLayout(1, 2));
+        FileContainer.setLayout(new GridLayout(1, 3));
         filePath = new JTextField("Paste The Path Here Or Click The Button On The Right!");
 
         JButton fileChoosingButton = new JButton("Select A File");

@@ -115,7 +115,7 @@ public class Verify extends JFrame implements ActionListener {
         // Main Options
         setSize(600,800);
         setTitle("Devify - Verifying!");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         verifyWithChecksumFile.setVisible(false);
 
         // Main Panel
