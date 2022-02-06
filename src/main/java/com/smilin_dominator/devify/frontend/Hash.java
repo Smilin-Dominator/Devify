@@ -29,9 +29,9 @@ public class Hash extends JFrame implements ActionListener {
     private final JTextField filePath;
     private final JFileChooser fileChooser;
     private final JDialog fileChoosingDialog;
-    private final JPanel mainFunctions;
     private final JTextField statusBar;
     private final JTextField checksumFileName;
+    private final JPanel buttonContainer;
 
     private final hash HashClass = new hash();
 
@@ -55,14 +55,14 @@ public class Hash extends JFrame implements ActionListener {
         fileChoosingButton.addActionListener(this);
 
         // The Main Functions
-        mainFunctions = new JPanel();
+        JPanel mainFunctions = new JPanel();
         mainFunctions.setLayout(new BorderLayout());
-        mainFunctions.setVisible(false);
+        mainFunctions.setVisible(true);
 
         statusBar = new JTextField("I'm The Status Bar!");
         checksumFileName = new JTextField("sha256.txt");
 
-        JPanel buttonContainer = new JPanel();
+        buttonContainer = new JPanel();
         buttonContainer.setLayout(new GridLayout(1, 2));
 
         JButton showHash = new JButton("Calculate The Hash");
@@ -100,7 +100,14 @@ public class Hash extends JFrame implements ActionListener {
     }
 
     public void run() {
+        mainFunctionsVisible(false);
         setVisible(true);
+    }
+
+    private void mainFunctionsVisible(boolean condition) {
+        statusBar.setVisible(condition);
+        buttonContainer.setVisible(condition);
+        checksumFileName.setVisible(condition);
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -110,19 +117,22 @@ public class Hash extends JFrame implements ActionListener {
         switch (com) {
 
             // Sent by fileChoosingButton
-            case "Select A File" -> fileChoosingDialog.setVisible(true);
+            case "Select A File" -> {
+                fileChoosingDialog.setVisible(true);
+                mainFunctionsVisible(false);
+            }
 
 
             // Sent by fileChooser
             case "ApproveSelection" -> {
                 filePath.setText(fileChooser.getSelectedFile().getAbsolutePath());
                 fileChoosingDialog.setVisible(false);
-                mainFunctions.setVisible(true);
+                mainFunctionsVisible(true);
             }
 
             case "CancelSelection" -> {
                 fileChoosingDialog.setVisible(false);
-                mainFunctions.setVisible(false);
+                mainFunctionsVisible(false);
             }
 
             // Sent by mainFunctions
