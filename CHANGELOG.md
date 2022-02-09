@@ -111,6 +111,16 @@ And unlike earlier, there's support for multi-file verifying!
 ### Features
 - New user interface with similarities to the original versions
 - Multi-File Verifying Support (from the same checksum file)
+### Fixed
+- None
+
+## [v1.3.1] - 9th February, 2022
+### Notes
+I added the logo (designed by Manish) to all the UIs in the Frontend.
+### Features
+- Logo in all the UIs
+### Fixed
+- None
 
 [v1.0]: https://github.com/Smilin-Dominator/Devify/releases/tag/v1.0
 [v1.0.1]: https://github.com/Smilin-Dominator/Devify/compare/v1.0...v1.0.1
@@ -124,3 +134,4 @@ And unlike earlier, there's support for multi-file verifying!
 [v1.2.1]: https://github.com/Smilin-Dominator/Devify/compare/v1.2..v1.2.1
 [v1.2.2]: https://github.com/Smilin-Dominator/Devify/compare/v1.2.1...v1.2.2
 [v1.3]: https://github.com/Smilin-Dominator/Devify/compare/v1.2.2...v1.3
+[v1.3.1]: https://github.com/Smilin-Dominator/Devify/compare/v1.3...v1.3.1

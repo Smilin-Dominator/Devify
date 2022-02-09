@@ -1,5 +1,7 @@
 package com.smilin_dominator.devify.frontend;
 
+import com.smilin_dominator.devify.backend.resources;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,6 +12,7 @@ public class Main extends JFrame implements ActionListener {
 
      private final Hash hashClass = new Hash();
      private final Verify verifyClass = new Verify();
+     private final resources resourcesClass = new resources();
 
      public Main() {
 
@@ -20,7 +23,7 @@ public class Main extends JFrame implements ActionListener {
 
           // Main Container
           JPanel overall = new JPanel();
-          overall.setLayout(new BoxLayout(overall, BoxLayout.Y_AXIS));
+          overall.setLayout(new BorderLayout());
 
           // The Buttons
           JPanel buttonContainer = new JPanel();
@@ -35,8 +38,13 @@ public class Main extends JFrame implements ActionListener {
           buttonContainer.add(verify);
           buttonContainer.add(hash);
 
+          // Logo
+          JLabel logo = new JLabel(resourcesClass.image("logos", "DevifyLogo1.png"), JLabel.CENTER);
+
           // Final Options
-          overall.add(buttonContainer);
+          overall.add(logo, BorderLayout.CENTER);
+          overall.add(buttonContainer, BorderLayout.PAGE_END);
+
           this.add(overall);
           setVisible(true);
 

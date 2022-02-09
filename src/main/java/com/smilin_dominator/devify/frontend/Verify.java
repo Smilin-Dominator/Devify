@@ -19,6 +19,7 @@ package com.smilin_dominator.devify.frontend;
 
 import com.smilin_dominator.devify.backend.hash;
 import com.smilin_dominator.devify.backend.verify;
+import com.smilin_dominator.devify.backend.resources;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -40,6 +41,11 @@ public class Verify extends JFrame implements ActionListener {
     private final DefaultMutableTreeNode verifyRoot = new DefaultMutableTreeNode("Files");
     private final JTree verifyTree = new JTree(verifyRoot);
 
+    /**
+     * This recurses through the elements in the JTree and expands them
+     * @param maximum The amount of rows
+     * @param count The current iteration
+     */
     private void extendElements(int maximum, int count) {
         if (count != maximum) {
             verifyTree.expandRow(count);
@@ -47,6 +53,10 @@ public class Verify extends JFrame implements ActionListener {
         }
     }
 
+    /**
+     * This creates TreeNodes for each file, containing it's status
+     * @param checksumFileName Path to the checksum file
+     */
     private void CheckFiles(String checksumFileName) {
 
         verifyTree.setVisible(false);
@@ -117,7 +127,9 @@ public class Verify extends JFrame implements ActionListener {
         selection.add(confirmVerification, BorderLayout.AFTER_LINE_ENDS);
 
         main.add(selection, BorderLayout.PAGE_START);
-        main.add(verifyPanel, BorderLayout.CENTER);
+        resources resourceClass = new resources();
+        main.add(new JLabel(resourceClass.image("logos", "DevifyLogo1.png")), BorderLayout.CENTER);
+        main.add(verifyPanel, BorderLayout.PAGE_END);
 
         this.add(main);
 
