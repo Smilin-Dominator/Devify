@@ -48,7 +48,7 @@ public class Hash extends JFrame implements ActionListener {
 
         // The File Selection Container
         JPanel FileContainer = new JPanel();
-        FileContainer.setLayout(new GridLayout(1, 3));
+        FileContainer.setLayout(new BorderLayout());
         filePath = new JTextField("Paste The Path Here Or Click The Button On The Right!");
 
         JButton fileChoosingButton = new JButton("Select A File");
@@ -88,13 +88,14 @@ public class Hash extends JFrame implements ActionListener {
 
         buttonContainer.add(showHash);
         buttonContainer.add(generateChecksums);
+
         mainFunctions.add(statusBar, BorderLayout.NORTH);
         mainFunctions.add(buttonContainer, BorderLayout.CENTER);
         mainFunctions.add(checksumFileName, BorderLayout.PAGE_END);
 
-        FileContainer.add(filePath);
-        FileContainer.add(fileChoosingButton);
-        FileContainer.add(usePath);
+        FileContainer.add(filePath, BorderLayout.CENTER);
+        FileContainer.add(usePath, BorderLayout.LINE_END);
+        FileContainer.add(fileChoosingButton, BorderLayout.AFTER_LAST_LINE);
 
         main.add(FileContainer, BorderLayout.PAGE_START);
         main.add(mainFunctions, BorderLayout.CENTER);
