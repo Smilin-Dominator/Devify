@@ -42,6 +42,11 @@ public class Verify extends JFrame implements ActionListener {
     private final DefaultMutableTreeNode verifyRoot = new DefaultMutableTreeNode("Files");
     private final JTree verifyTree = new JTree(verifyRoot);
 
+    /**
+     * This recurses through the elements in the JTree and expands them
+     * @param maximum The amount of rows
+     * @param count The current iteration
+     */
     private void extendElements(int maximum, int count) {
         if (count != maximum) {
             verifyTree.expandRow(count);
@@ -49,6 +54,10 @@ public class Verify extends JFrame implements ActionListener {
         }
     }
 
+    /**
+     * This creates TreeNodes for each file, containing it's status
+     * @param checksumFileName Path to the checksum file
+     */
     private void CheckFiles(String checksumFileName) {
 
         verifyTree.setVisible(false);
