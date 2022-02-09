@@ -35,7 +35,6 @@ public class Hash extends JFrame implements ActionListener {
     private final JPanel buttonContainer;
 
     private final hash HashClass = new hash();
-    private final resources ResourceClass = new resources();
 
     public Hash() {
 
@@ -100,7 +99,8 @@ public class Hash extends JFrame implements ActionListener {
         FileContainer.add(fileChoosingButton, BorderLayout.AFTER_LAST_LINE);
 
         main.add(FileContainer, BorderLayout.PAGE_START);
-        main.add(new JLabel(ResourceClass.image("logos", "DevifyLogo1.png")));
+        resources resourceClass = new resources();
+        main.add(new JLabel(resourceClass.image("logos", "DevifyLogo1.png")));
         main.add(mainFunctions, BorderLayout.PAGE_END);
 
         this.add(main);
@@ -131,9 +131,7 @@ public class Hash extends JFrame implements ActionListener {
             }
 
             // Sent by usePath
-            case "Submit" -> {
-                mainFunctionsVisible(true);
-            }
+            case "Submit" -> mainFunctionsVisible(true);
 
 
             // Sent by fileChooser
