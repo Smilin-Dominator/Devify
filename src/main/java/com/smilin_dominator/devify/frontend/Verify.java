@@ -89,7 +89,7 @@ public class Verify extends JFrame implements ActionListener {
 
         // Main Panel
         JPanel main = new JPanel();
-        main.setLayout(new BoxLayout(main, BoxLayout.Y_AXIS));
+        main.setLayout(new BorderLayout());
 
         // Selection Panel
         JPanel selection = new JPanel();
@@ -117,8 +117,8 @@ public class Verify extends JFrame implements ActionListener {
         selection.add(selectButton);
         selection.add(confirmVerification);
 
-        main.add(selection);
-        main.add(verifyPanel);
+        main.add(selection, BorderLayout.PAGE_START);
+        main.add(verifyPanel, BorderLayout.CENTER);
 
         this.add(main);
 

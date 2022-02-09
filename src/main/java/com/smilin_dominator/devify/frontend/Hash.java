@@ -44,7 +44,7 @@ public class Hash extends JFrame implements ActionListener {
 
         // Main Container
         JPanel main = new JPanel();
-        main.setLayout(new BoxLayout(main, BoxLayout.Y_AXIS));
+        main.setLayout(new BorderLayout());
 
         // The File Selection Container
         JPanel FileContainer = new JPanel();
@@ -96,8 +96,8 @@ public class Hash extends JFrame implements ActionListener {
         FileContainer.add(fileChoosingButton);
         FileContainer.add(usePath);
 
-        main.add(FileContainer);
-        main.add(mainFunctions);
+        main.add(FileContainer, BorderLayout.PAGE_START);
+        main.add(mainFunctions, BorderLayout.CENTER);
 
         this.add(main);
 
