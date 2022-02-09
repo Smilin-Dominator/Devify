@@ -17,15 +17,16 @@
 */
 package com.smilin_dominator.devify.frontend;
 
+import com.smilin_dominator.devify.backend.hash;
+import com.smilin_dominator.devify.backend.verify;
+
 import javax.swing.*;
+import javax.swing.tree.DefaultMutableTreeNode;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.Objects;
-
-import com.smilin_dominator.devify.backend.verify;
-import com.smilin_dominator.devify.backend.hash;
 
 public class Verify extends JFrame implements ActionListener {
 
@@ -36,77 +37,46 @@ public class Verify extends JFrame implements ActionListener {
     private final JFileChooser fileChooser = new JFileChooser();
     private final JTextField pathToChecksum = new JTextField("Paste Or Browse");
 
-    private final JPanel verifyWithChecksumFile = new JPanel();
+    private final DefaultMutableTreeNode verifyRoot = new DefaultMutableTreeNode("Files");
+    private final JTree verifyTree = new JTree(verifyRoot);
+
+    private void extendElements(int maximum, int count) {
+        if (count != maximum) {
+            verifyTree.expandRow(count);
+            extendElements(maximum, count + 1);
+        }
+    }
 
     private void CheckFiles(String checksumFileName) {
 
-        verifyWithChecksumFile.removeAll();
-        verifyWithChecksumFile.revalidate();
+        verifyTree.setVisible(false);
+
+	    verifyRoot.removeAllChildren();
         HashMap<String, String> FileHashMap = VerifyClass.getFiles(checksumFileName);
 
         for (String file : FileHashMap.keySet()) {
 
-            // -------------------------------- Labels --------------------------- //
-
-            JLabel currentFileShow = new JLabel("Current File");
-            currentFileShow.setOpaque(true);
-            currentFileShow.setBackground(Color.LIGHT_GRAY);
-
-            JLabel previousHashShow = new JLabel("Hash In Checksum");
-            previousHashShow.setOpaque(true);
-            previousHashShow.setBackground(Color.white);
-
-            JLabel currentHashShow = new JLabel("New Hash");
-            currentHashShow.setOpaque(true);
-            currentHashShow.setBackground(Color.LIGHT_GRAY);
-
-            JLabel sameFileShow = new JLabel("Same?");
-            sameFileShow.setOpaque(true);
-            sameFileShow.setBackground(Color.white);
-
             // -------------------------------- Data --------------------------- //
-
-            JPanel row = new JPanel();
-            row.setLayout(new SpringLayout());
-
+            
             String newHash = HashClass.file(file);
             String lastHash = FileHashMap.get(file);
+            DefaultMutableTreeNode name = new DefaultMutableTreeNode(file);
+            DefaultMutableTreeNode equal = new DefaultMutableTreeNode(String.format("Equal\t\t: %s", Objects.equals(newHash, lastHash)));
+            DefaultMutableTreeNode previousHash = new DefaultMutableTreeNode(String.format("Last Hash\t\t: %s", lastHash));
+            DefaultMutableTreeNode currentHash = new DefaultMutableTreeNode(String.format("New Hash\t\t: %s", newHash));
 
-            JLabel currentFile = new JLabel(file);
-            currentFile.setOpaque(true);
-            currentFile.setBackground(Color.LIGHT_GRAY);
+            name.add(previousHash);
+            name.add(currentHash);
+            name.add(equal);
 
-            JLabel previousHash = new JLabel(lastHash);
-            previousHash.setOpaque(true);
-            previousHash.setBackground(Color.white);
-
-            JLabel currentHash = new JLabel(newHash);
-            currentHash.setOpaque(true);
-            currentHash.setBackground(Color.LIGHT_GRAY);
-
-            JLabel sameFile = new JLabel(String.valueOf(Objects.equals(newHash, lastHash)));
-            sameFile.setOpaque(true);
-            sameFile.setBackground(Color.white);
-
-            row.add(currentFileShow);
-            row.add(currentFile);
-
-            row.add(previousHashShow);
-            row.add(previousHash);
-
-            row.add(currentHashShow);
-            row.add(currentHash);
-
-            row.add(sameFileShow);
-            row.add(sameFile);
-
-            SpringUtilities.makeCompactGrid(row, 4, 2, 1, 1, 1, 1);
-            verifyWithChecksumFile.add(row);
-
+            verifyRoot.add(name);
+	    
         }
 
-        verifyWithChecksumFile.repaint();
-        verifyWithChecksumFile.setVisible(true);
+        extendElements(verifyTree.getRowCount(), 0);
+
+        verifyTree.revalidate();
+        verifyTree.setVisible(true);
 
     }
 
@@ -116,7 +86,6 @@ public class Verify extends JFrame implements ActionListener {
         setSize(600,800);
         setTitle("Devify - Verifying!");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        verifyWithChecksumFile.setVisible(false);
 
         // Main Panel
         JPanel main = new JPanel();
@@ -140,12 +109,16 @@ public class Verify extends JFrame implements ActionListener {
         fileSelectionDialog.add(fileChooser);
 
         // Final
+        JPanel verifyPanel = new JPanel();
+        verifyTree.setVisible(false);
+        verifyPanel.add(verifyTree);
+
         selection.add(pathToChecksum);
         selection.add(selectButton);
         selection.add(confirmVerification);
 
         main.add(selection);
-        main.add(verifyWithChecksumFile);
+        main.add(verifyPanel);
 
         this.add(main);
 
@@ -173,7 +146,12 @@ public class Verify extends JFrame implements ActionListener {
                 CheckFiles(pathToChecksum.getText());
             }
 
-            case "CancelSelection" -> fileSelectionDialog.setVisible(false);
+            case "CancelSelection" -> {
+                verifyRoot.removeAllChildren();
+                verifyTree.revalidate();
+                verifyTree.setVisible(false);
+                fileSelectionDialog.setVisible(false);
+            }
 
         }
     }
