@@ -18,6 +18,7 @@
 package com.smilin_dominator.devify.frontend;
 
 import com.smilin_dominator.devify.backend.hash;
+import com.smilin_dominator.devify.backend.resources;
 
 import javax.swing.*;
 import java.awt.*;
@@ -34,6 +35,7 @@ public class Hash extends JFrame implements ActionListener {
     private final JPanel buttonContainer;
 
     private final hash HashClass = new hash();
+    private final resources ResourceClass = new resources();
 
     public Hash() {
 
@@ -98,7 +100,8 @@ public class Hash extends JFrame implements ActionListener {
         FileContainer.add(fileChoosingButton, BorderLayout.AFTER_LAST_LINE);
 
         main.add(FileContainer, BorderLayout.PAGE_START);
-        main.add(mainFunctions, BorderLayout.CENTER);
+        main.add(new JLabel(ResourceClass.image("logos", "DevifyLogo1.png")));
+        main.add(mainFunctions, BorderLayout.PAGE_END);
 
         this.add(main);
 
