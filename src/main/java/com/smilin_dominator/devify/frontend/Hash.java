@@ -100,7 +100,7 @@ public class Hash extends JFrame implements ActionListener {
 
         main.add(FileContainer, BorderLayout.PAGE_START);
         resources resourceClass = new resources();
-        main.add(new JLabel(resourceClass.image("logos", "DevifyLogo1.png")));
+        main.add(new JLabel(resourceClass.image("logos", "DevifyLogo1.png"), JLabel.CENTER));
         main.add(mainFunctions, BorderLayout.PAGE_END);
 
         this.add(main);
