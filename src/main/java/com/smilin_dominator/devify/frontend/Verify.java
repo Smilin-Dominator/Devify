@@ -19,6 +19,7 @@ package com.smilin_dominator.devify.frontend;
 
 import com.smilin_dominator.devify.backend.hash;
 import com.smilin_dominator.devify.backend.verify;
+import com.smilin_dominator.devify.backend.resources;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -32,6 +33,7 @@ public class Verify extends JFrame implements ActionListener {
 
     private final verify VerifyClass = new verify();
     private final hash HashClass = new hash();
+    private final resources ResourceClass = new resources();
 
     private final JDialog fileSelectionDialog = new JDialog();
     private final JFileChooser fileChooser = new JFileChooser();
@@ -117,7 +119,8 @@ public class Verify extends JFrame implements ActionListener {
         selection.add(confirmVerification, BorderLayout.AFTER_LINE_ENDS);
 
         main.add(selection, BorderLayout.PAGE_START);
-        main.add(verifyPanel, BorderLayout.CENTER);
+        main.add(new JLabel(ResourceClass.image("logos", "DevifyLogo1.png")), BorderLayout.CENTER);
+        main.add(verifyPanel, BorderLayout.PAGE_END);
 
         this.add(main);
 
