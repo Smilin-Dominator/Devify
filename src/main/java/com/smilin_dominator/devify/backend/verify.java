@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
@@ -29,6 +30,12 @@ import java.util.Objects;
  * This class verifies the hashes provided by the hash class
  */
 public class verify {
+
+    private Path getChecksumLocation(String filePath, String checksumFileName) {
+        Path dirOfFile = Paths.get(filePath).getParent();
+        Path checksum = Paths.get(dirOfFile.toString(), checksumFileName);
+        return checksum;
+    }
 
     // An instance of the Hash class
     private final hash hashing = new hash();
@@ -79,8 +86,7 @@ public class verify {
             common Common = new common();
 
             // Make 'Path' objects
-            Path dir = Paths.get(path_to_file).getParent();
-            Path shafile = Paths.get(dir.toString(), checksum);
+            Path shafile = getChecksumLocation(path_to_file, checksum);
 
             // Get the first line of the file
             List<String> contents = Files.readAllLines(shafile);
@@ -106,6 +112,26 @@ public class verify {
         } catch (IOException ex) {
             hashText.setText("There is no '" + checksum + "' in this DIR!");
         }
+    }
+
+    public HashMap<String,String> getFiles(String checksumFileName) {
+
+        // Make 'Path' objects
+        Path checksumFile = Paths.get(checksumFileName);
+
+        // Get all the lines of the file
+        HashMap<String, String> output = new HashMap<>();
+        try {
+            List<String> contents = Files.readAllLines(checksumFile);
+            for (String line: contents) {
+                String[] split = line.split("  ");
+                output.put(split[1], split[0]);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return output;
+
     }
 
 }
