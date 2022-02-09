@@ -33,7 +33,6 @@ public class Verify extends JFrame implements ActionListener {
 
     private final verify VerifyClass = new verify();
     private final hash HashClass = new hash();
-    private final resources ResourceClass = new resources();
 
     private final JDialog fileSelectionDialog = new JDialog();
     private final JFileChooser fileChooser = new JFileChooser();
@@ -128,7 +127,8 @@ public class Verify extends JFrame implements ActionListener {
         selection.add(confirmVerification, BorderLayout.AFTER_LINE_ENDS);
 
         main.add(selection, BorderLayout.PAGE_START);
-        main.add(new JLabel(ResourceClass.image("logos", "DevifyLogo1.png")), BorderLayout.CENTER);
+        resources resourceClass = new resources();
+        main.add(new JLabel(resourceClass.image("logos", "DevifyLogo1.png")), BorderLayout.CENTER);
         main.add(verifyPanel, BorderLayout.PAGE_END);
 
         this.add(main);
