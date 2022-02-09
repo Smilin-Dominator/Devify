@@ -101,6 +101,17 @@ I added a class that can return Fonts and ImageIcons from files that're in the J
 ### Fixed
 - None
 
+## [v1.3] - 9th February, 2022
+### Notes
+I redesigned the main user interface by splitting the user interface into three;
+- The Selection Screen
+- Hashing
+- Verifying
+And unlike earlier, there's support for multi-file verifying!
+### Features
+- New user interface with similarities to the original versions
+- Multi-File Verifying Support (from the same checksum file)
+
 [v1.0]: https://github.com/Smilin-Dominator/Devify/releases/tag/v1.0
 [v1.0.1]: https://github.com/Smilin-Dominator/Devify/compare/v1.0...v1.0.1
 [v1.1]: https://github.com/Smilin-Dominator/Devify/compare/v1.0.1...v1.1
@@ -112,3 +123,4 @@ I added a class that can return Fonts and ImageIcons from files that're in the J
 [v1.2]: https://github.com/Smilin-Dominator/Devify/compare/v1.1.5..v1.2
 [v1.2.1]: https://github.com/Smilin-Dominator/Devify/compare/v1.2..v1.2.1
 [v1.2.2]: https://github.com/Smilin-Dominator/Devify/compare/v1.2.1...v1.2.2
+[v1.3]: https://github.com/Smilin-Dominator/Devify/compare/v1.2.2...v1.3
