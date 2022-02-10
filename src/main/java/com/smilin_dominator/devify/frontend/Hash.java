@@ -1,4 +1,4 @@
-/*
+ /*
     Devify
     Copyright (C) 2021 Devisha Padmaperuma
 
@@ -98,8 +98,8 @@ public class Hash extends JFrame implements ActionListener {
         mainFunctions.add(checksumFileName, BorderLayout.PAGE_END);
 
         FileContainer.add(filePath, BorderLayout.CENTER);
-        FileContainer.add(usePath, BorderLayout.LINE_END);
-        FileContainer.add(fileChoosingButton, BorderLayout.AFTER_LAST_LINE);
+        FileContainer.add(usePath, BorderLayout.AFTER_LAST_LINE);
+        FileContainer.add(fileChoosingButton, BorderLayout.LINE_END);
 
         main.add(FileContainer, BorderLayout.PAGE_START);
         resources resourceClass = new resources();
