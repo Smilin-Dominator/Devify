@@ -33,8 +33,7 @@ public class verify {
 
     private Path getChecksumLocation(String filePath, String checksumFileName) {
         Path dirOfFile = Paths.get(filePath).getParent();
-        Path checksum = Paths.get(dirOfFile.toString(), checksumFileName);
-        return checksum;
+        return Paths.get(dirOfFile.toString(), checksumFileName);
     }
 
     // An instance of the Hash class
@@ -57,7 +56,7 @@ public class verify {
      * @return True if they're the same, False if they're different
      * @throws IOException If there's an error while reading the file
      */
-    public boolean verify_file(String path, String hash) throws IOException {
+    public boolean verify_file(String path, String hash) {
         String new_hash = hashing.file(path);
         return compare_hashes(hash, new_hash);
     }
