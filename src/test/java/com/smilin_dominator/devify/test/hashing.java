@@ -24,7 +24,6 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
-import javax.swing.*;
 import java.util.Arrays;
 import java.util.List;
 import java.io.File;
@@ -60,7 +59,7 @@ public class hashing {
     @Order(2)
     void hashFile() throws IOException {
 
-        String real_hash = "abdc941476c8244ab0da7df485644f13ac0eb9cb662813a7a31a13b1b034312a";
+        String real_hash = "7a9b7f453ce0659bfc7d0df24054a5f85a534bd381ddb06bfd9eed993969a939";
 
         File ftbh = new File("tbh.txt");
         assert ftbh.createNewFile();
