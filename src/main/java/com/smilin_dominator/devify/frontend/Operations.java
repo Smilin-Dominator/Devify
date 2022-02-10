@@ -76,6 +76,54 @@ public class Operations {
             this.root = treeRoot;
         }
 
+        /**
+         * This recurses through the elements in the JTree and expands them
+         * @param maximum The amount of rows
+         * @param count The current iteration
+         */
+        private void extendElements(int maximum, int count) {
+            if (count != maximum) {
+                tree.expandRow(count);
+                extendElements(maximum, count + 1);
+            }
+        }
+
+        /**
+         * This creates TreeNodes for each file, containing it's status
+         * @param checksumFileName Path to the checksum file
+         */
+        public void CheckFiles(String checksumFileName) {
+
+            exec.submit(() -> {
+                tree.setVisible(false);
+
+                root.removeAllChildren();
+                HashMap<String, String> FileHashMap = VerifyClass.getFiles(checksumFileName);
+                for (String file : FileHashMap.keySet()) {
+
+                    String newHash = HashClass.file(file);
+                    String lastHash = FileHashMap.get(file);
+                    DefaultMutableTreeNode name = new DefaultMutableTreeNode(file);
+                    DefaultMutableTreeNode equal = new DefaultMutableTreeNode(String.format("Equal\t\t: %s", Objects.equals(newHash, lastHash)));
+                    DefaultMutableTreeNode previousHash = new DefaultMutableTreeNode(String.format("Last Hash\t\t: %s", lastHash));
+                    DefaultMutableTreeNode currentHash = new DefaultMutableTreeNode(String.format("New Hash\t\t: %s", newHash));
+
+                    name.add(previousHash);
+                    name.add(currentHash);
+                    name.add(equal);
+
+                    root.add(name);
+
+                }
+
+                extendElements(tree.getRowCount(), 0);
+
+                tree.revalidate();
+                tree.setVisible(true);
+            });
+
+        }
+
     }
 
 }
