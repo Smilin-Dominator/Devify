@@ -19,6 +19,10 @@
 package com.smilin_dominator.devify.frontend;
 
 import javax.swing.JLabel;
+import javax.swing.JTree;
+import javax.swing.tree.DefaultMutableTreeNode;
+import java.util.HashMap;
+import java.util.Objects;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -55,6 +59,69 @@ public class Operations {
                     case 3 -> status.setText("There's a checksum file in this directory!");
                 }
             });
+        }
+
+    }
+
+    public static class Verify extends Operations {
+
+        private final JTree tree;
+        private final DefaultMutableTreeNode root;
+        private final ExecutorService exec = Executors.newSingleThreadExecutor();
+        private final verify VerifyClass = new verify();
+        private final hash HashClass = new hash();
+
+        public Verify(JTree treeWidget, DefaultMutableTreeNode treeRoot) {
+            this.tree = treeWidget;
+            this.root = treeRoot;
+        }
+
+        /**
+         * This recurses through the elements in the JTree and expands them
+         * @param maximum The amount of rows
+         * @param count The current iteration
+         */
+        private void extendElements(int maximum, int count) {
+            if (count != maximum) {
+                tree.expandRow(count);
+                extendElements(maximum, count + 1);
+            }
+        }
+
+        /**
+         * This creates TreeNodes for each file, containing it's status
+         * @param checksumFileName Path to the checksum file
+         */
+        public void CheckFiles(String checksumFileName) {
+
+            exec.submit(() -> {
+                tree.setVisible(false);
+
+                root.removeAllChildren();
+                HashMap<String, String> FileHashMap = VerifyClass.getFiles(checksumFileName);
+                for (String file : FileHashMap.keySet()) {
+
+                    String newHash = HashClass.file(file);
+                    String lastHash = FileHashMap.get(file);
+                    DefaultMutableTreeNode name = new DefaultMutableTreeNode(file);
+                    DefaultMutableTreeNode equal = new DefaultMutableTreeNode(String.format("Equal\t\t: %s", Objects.equals(newHash, lastHash)));
+                    DefaultMutableTreeNode previousHash = new DefaultMutableTreeNode(String.format("Last Hash\t\t: %s", lastHash));
+                    DefaultMutableTreeNode currentHash = new DefaultMutableTreeNode(String.format("New Hash\t\t: %s", newHash));
+
+                    name.add(previousHash);
+                    name.add(currentHash);
+                    name.add(equal);
+
+                    root.add(name);
+
+                }
+
+                extendElements(tree.getRowCount(), 0);
+
+                tree.revalidate();
+                tree.setVisible(true);
+            });
+
         }
 
     }
