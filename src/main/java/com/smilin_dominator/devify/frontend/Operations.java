@@ -27,20 +27,14 @@ import com.smilin_dominator.devify.backend.verify;
 
 public class Operations {
 
-    private static JLabel status = null;
-    private static final verify VerifyClass = new verify();
-
-    public Operations(JLabel statusBar) {
-        status = statusBar;
-    }
-
     public static class Hash extends Operations {
 
         private final ExecutorService exec = Executors.newSingleThreadExecutor();
         private final hash HashClass = new hash();
+        private final JLabel status;
 
         public Hash(JLabel statusBar) {
-            super(statusBar);
+            this.status = statusBar;
         }
 
         public void display_hash(String fn) {
