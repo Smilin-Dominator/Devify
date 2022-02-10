@@ -122,6 +122,18 @@ I added the logo (designed by Manish) to all the UIs in the Frontend.
 ### Fixed
 - None
 
+## [v1.3.2] - 10th February, 2022 
+### Notes 
+I added an 'Operations' Class to the program. This essentially wraps the functions
+in `com.smilin_dominator.devify.backend.verify` and `com.smilin_dominator.devify.backend.hash` with Threads.
+This ensures that the app runs smoothly and doesn't freeze when hashing large files.
+### Features
+- Threading Support with new class Operations
+- Made the Verify Tree a Scrollable Element
+- Redesigned Logo by Manish
+### Fixed
+- Handled scenarios where files don't exist
+
 [v1.0]: https://github.com/Smilin-Dominator/Devify/releases/tag/v1.0
 [v1.0.1]: https://github.com/Smilin-Dominator/Devify/compare/v1.0...v1.0.1
 [v1.1]: https://github.com/Smilin-Dominator/Devify/compare/v1.0.1...v1.1
@@ -132,6 +144,7 @@ I added the logo (designed by Manish) to all the UIs in the Frontend.
 [v1.1.5]: https://github.com/Smilin-Dominator/Devify/compare/v1.1.4...v1.1.5
 [v1.2]: https://github.com/Smilin-Dominator/Devify/compare/v1.1.5..v1.2
 [v1.2.1]: https://github.com/Smilin-Dominator/Devify/compare/v1.2..v1.2.1
-[v1.2.2]: https://github.com/Smilin-Dominator/Devify/compare/v1.2.1...v1.2.2
-[v1.3]: https://github.com/Smilin-Dominator/Devify/compare/v1.2.2...v1.3
-[v1.3.1]: https://github.com/Smilin-Dominator/Devify/compare/v1.3...v1.3.1
+[v1.2.2]:https://github.com/Smilin-Dominator/Devify/compare/v1.2.1...v1.2.2 
+[v1.3]:https://github.com/Smilin-Dominator/Devify/compare/v1.2.2...v1.3 
+[v1.3.1]:https://github.com/Smilin-Dominator/Devify/compare/v1.3...v1.3.1 
+[v1.3.2]:https://github.com/Smilin-Dominator/Devify/compare/v1.3.1...v1.3.2
