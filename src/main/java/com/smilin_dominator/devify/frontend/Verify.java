@@ -28,7 +28,7 @@ public class Verify extends JFrame implements ActionListener {
 
     private final JDialog fileSelectionDialog = new JDialog();
     private final JFileChooser fileChooser = new JFileChooser();
-    private final JTextField pathToChecksum = new JTextField("Paste Or Browse");
+    private final JTextField pathToChecksum = new JTextField("Paste The Path Here Or Browse Files With The Button On The Right!");
 
     private final DefaultMutableTreeNode verifyRoot = new DefaultMutableTreeNode("Files");
     private final JTree verifyTree = new JTree(verifyRoot);
@@ -67,8 +67,8 @@ public class Verify extends JFrame implements ActionListener {
         verifyTree.setVisible(false);
 
         selection.add(pathToChecksum, BorderLayout.CENTER);
-        selection.add(selectButton, BorderLayout.AFTER_LAST_LINE);
-        selection.add(confirmVerification, BorderLayout.AFTER_LINE_ENDS);
+        selection.add(selectButton, BorderLayout.AFTER_LINE_ENDS);
+        selection.add(confirmVerification, BorderLayout.AFTER_LAST_LINE);
 
         main.add(selection, BorderLayout.PAGE_START);
         resources resourceClass = new resources();
