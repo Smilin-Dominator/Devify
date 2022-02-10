@@ -77,9 +77,10 @@ public class hash {
      * @param hash The SHA256 Hash of the File
      * @param path The path to the file
      * @param checksum_file The filename of the checksum file
-     * @param status The JTextField to write the status to
+     *
+     * @return 1 if it's Successful, 2 if it's an IOException, 3 if it's an AssertionError
      */
-    public void checksum(String hash, String path, String checksum_file, JTextField status) {
+    public int checksum(String hash, String path, String checksum_file) {
 
         // Getting the path of the checksum hash
         Path directory = Paths.get(path).getParent();
@@ -92,11 +93,11 @@ public class hash {
         try {
             assert path_to_cs.toFile().createNewFile();
             Files.writeString(path_to_cs, text);
-            status.setText("Success!");
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (AssertionError e) {
-            status.setText("A checksum exists in this directory!");
+            return 1;
+        } catch (IOException e) { // When you can't open, etc..
+            return 2;
+        } catch (AssertionError e) { // When a Checksum File Already Exists
+            return 3;
         }
 
     }
