@@ -22,6 +22,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 import javax.swing.JTextField;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -46,7 +47,7 @@ public class hash {
      * Loads a file as a FileInputStream and returns it's hash, similar to the 'sha256sum' and 'Get-FileHash' commands
      * in *NIX and DOS respectively
      * @param path The path to the file
-     * @return The SHA256 Hash of the File
+     * @return The SHA256 Hash of the File if the file exists, otherwise it returns a ""
      */
     public String file(String path) {
 
@@ -56,6 +57,7 @@ public class hash {
         // Exit if the Path does not exist
         if (!fil.exists()) {
             System.out.println("Path '" + fil.getAbsolutePath() + "' Does Not Exist!");
+            return "";
         }
 
         // Hashing the file itself

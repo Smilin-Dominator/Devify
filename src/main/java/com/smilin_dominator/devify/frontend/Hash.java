@@ -35,7 +35,7 @@ public class Hash extends JFrame implements ActionListener {
     private final JPanel buttonContainer;
 
     private final hash HashClass = new hash();
-    private final ThreadWrapper.Hash ops;
+    private final Operations.Hash ops;
 
     public Hash() {
 
@@ -86,7 +86,7 @@ public class Hash extends JFrame implements ActionListener {
         fileChooser.addActionListener(this);
 
         // Final Stage
-        ops = new ThreadWrapper.Hash(statusBar);
+        ops = new Operations.Hash(statusBar);
 
         fileChoosingDialog.add(fileChooser);
 

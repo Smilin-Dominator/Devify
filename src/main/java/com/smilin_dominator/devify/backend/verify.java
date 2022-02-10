@@ -73,47 +73,6 @@ public class verify {
         return compare_hashes(hash, new_hash);
     }
 
-    /**
-     * This checks the checksum file and verifies the integrity of the file
-     * @param path_to_file The path to the file you want to verify
-     * @param checksum The filename of the Checksum File
-     * @param hashText The main status bar
-     */
-    public void verify_with_checksum(String path_to_file, String checksum, JTextField hashText) {
-        try {
-
-            // Create a class for the common functions
-            common Common = new common();
-
-            // Make 'Path' objects
-            Path shafile = getChecksumLocation(path_to_file, checksum);
-
-            // Get the first line of the file
-            List<String> contents = Files.readAllLines(shafile);
-            String line = contents.get(0);
-
-            // Split the line and obtain information
-            String[] line_split = line.split("  ");
-            String hash = line_split[0];
-            String filename = line_split[1];
-
-            // Verifies the file if the filename is in the absolute path
-            boolean samefile = Common.filename_in_path(path_to_file, filename);
-            if (samefile) {
-                if (verify_file(path_to_file, hash)) {
-                    hashText.setText("File Is The Same!");
-                } else {
-                    hashText.setText("File Is Not The Same!");
-                }
-            } else {
-                hashText.setText("This Is Not The File That's Hashed!");
-            }
-
-        } catch (IOException ex) {
-            hashText.setText("There is no '" + checksum + "' in this DIR!");
-        }
-    }
-
     public HashMap<String,String> getFiles(String checksumFileName) {
 
         // Make 'Path' objects
