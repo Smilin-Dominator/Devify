@@ -44,7 +44,12 @@ public class Operations {
         public void display_hash(String fn) {
             exec.submit(() -> {
                 status.setText("Calculating Hash!");
-                status.setText(HashClass.file(fn));
+                String hash = HashClass.file(fn);
+                if (Objects.equals(hash, "")) {
+                    status.setText("File Not Found!");
+                } else {
+                    status.setText(HashClass.file(fn));
+                }
             });
         }
 
@@ -52,11 +57,15 @@ public class Operations {
             exec.submit(() -> {
                 status.setText("Writing Checksum!");
                 String hash = HashClass.file(path);
-                int cs_status = HashClass.checksum(hash, path, checksumPath);
-                switch (cs_status) {
-                    case 1 -> status.setText("Success!");
-                    case 2 -> status.setText("Error While Writing To File!");
-                    case 3 -> status.setText("There's a checksum file in this directory!");
+                if (Objects.equals(hash, "")) {
+                    status.setText("File Not Found!");
+                } else {
+                    int cs_status = HashClass.checksum(hash, path, checksumPath);
+                    switch (cs_status) {
+                        case 1 -> status.setText("Success!");
+                        case 2 -> status.setText("Error While Writing To File!");
+                        case 3 -> status.setText("There's a checksum file in this directory!");
+                    }
                 }
             });
         }
@@ -102,7 +111,11 @@ public class Operations {
                 for (String file : FileHashMap.keySet()) {
 
                     String newHash = HashClass.file(file);
+                    if (Objects.equals(newHash, "")) {
+                        newHash = "File Doesn't Exist!";
+                    }
                     String lastHash = FileHashMap.get(file);
+
                     DefaultMutableTreeNode name = new DefaultMutableTreeNode(file);
                     DefaultMutableTreeNode equal = new DefaultMutableTreeNode(String.format("Equal\t\t: %s", Objects.equals(newHash, lastHash)));
                     DefaultMutableTreeNode previousHash = new DefaultMutableTreeNode(String.format("Last Hash\t\t: %s", lastHash));
