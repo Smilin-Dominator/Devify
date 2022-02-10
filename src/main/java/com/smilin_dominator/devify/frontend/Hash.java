@@ -18,7 +18,6 @@
 */
 package com.smilin_dominator.devify.frontend;
 
-import com.smilin_dominator.devify.backend.hash;
 import com.smilin_dominator.devify.backend.resources;
 
 import javax.swing.*;
@@ -35,7 +34,6 @@ import java.awt.event.ActionListener;
     private final JTextField checksumFileName;
     private final JPanel buttonContainer;
 
-    private final hash HashClass = new hash();
     private final Operations.Hash ops;
 
     public Hash() {
@@ -160,9 +158,7 @@ import java.awt.event.ActionListener;
             }
 
             // Sent by mainFunctions
-            case "Calculate The Hash" -> {
-                ops.display_hash(path);
-            }
+            case "Calculate The Hash" -> ops.display_hash(path);
 
             case "Write The Checksum" -> {
                 ops.write_checksum(path, checksumFile);
