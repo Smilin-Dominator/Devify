@@ -89,7 +89,7 @@ public class hashing {
         String abspath = ftbh.getAbsolutePath();
 
         String real_outcome = "abdc941476c8244ab0da7df485644f13ac0eb9cb662813a7a31a13b1b034312a  " + abspath;
-        hashing_test.checksum("abdc941476c8244ab0da7df485644f13ac0eb9cb662813a7a31a13b1b034312a", abspath, "hash_test_hash.txt", new JTextField());
+        hashing_test.checksum("abdc941476c8244ab0da7df485644f13ac0eb9cb662813a7a31a13b1b034312a", abspath, "hash_test_hash.txt");
 
         File check = new File("hash_test_hash.txt");
         List<String> fil = Files.readAllLines(check.toPath());

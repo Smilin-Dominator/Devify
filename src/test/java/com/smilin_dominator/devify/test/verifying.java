@@ -30,6 +30,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
@@ -89,13 +90,11 @@ public class verifying {
 
         File ver = new File("verify_test.txt");
         hash Hash = new hash();
-        JTextField test = new JTextField();
-        Hash.checksum("27f6b7d42d75634cd4f41d771f96b47a60df33029cfd517e3a62f51d42f47976", ver.getAbsolutePath(), "verify_hash.txt", test);
-        assert Objects.equals(test.getText(), "Success!");
+        Hash.checksum("d2725eec6af3fc3ea92c0ee285bb6780d6414f28a3d06b18f69cca57025f9360", ver.getAbsolutePath(), "verify_hash.txt");
 
-        Verify.verify_with_checksum(ver.getAbsolutePath(), "verify_hash.txt", test);
-        System.out.println(test.getText());
-        assert Objects.equals(test.getText(), "File Is The Same!");
+        HashMap<String, String> hashes = Verify.getFiles("verify_hash.txt");
+        String newHash = Hash.file(ver.getAbsolutePath());
+        assert Objects.equals(hashes.get(ver.getAbsolutePath()), newHash);
 
     }
 
