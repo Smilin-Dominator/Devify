@@ -65,8 +65,10 @@ import java.awt.event.ActionListener;
         mainFunctions.setLayout(new BorderLayout());
         mainFunctions.setVisible(true);
 
-        statusBar = new JLabel("I'm The Status Bar!");
+        statusBar = new JLabel("I'm The Status Bar!", JLabel.CENTER);
+
         checksumFileName = new JTextField("sha256.txt");
+        checksumFileName.setHorizontalAlignment(JTextField.CENTER);
 
         buttonContainer = new JPanel();
         buttonContainer.setLayout(new GridLayout(1, 2));
