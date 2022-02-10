@@ -1,3 +1,4 @@
+// verify.java -> This contains all the functions related to verifying
 /*
     Devify
     Copyright (C) 2021 Devisha Padmaperuma

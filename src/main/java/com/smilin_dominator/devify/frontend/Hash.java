@@ -1,4 +1,5 @@
- /*
+// Hash.java -> This is the frontend for Hashing
+/*
     Devify
     Copyright (C) 2021 Devisha Padmaperuma
 
@@ -24,7 +25,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 
  public class Hash extends JFrame implements ActionListener {
 

@@ -1,4 +1,4 @@
-// ThreadWrapper.java -> Wraps the functions in the backend with Threading
+// Operations.java -> Wraps the functions in the backend with Threading
 /*
     Devify
     Copyright (C) 2021 Devisha Padmaperuma

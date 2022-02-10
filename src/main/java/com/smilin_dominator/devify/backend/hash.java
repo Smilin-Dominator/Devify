@@ -1,3 +1,4 @@
+// hash.java -> This contains all the functions related to hashing
 /*
     Devify
     Copyright (C) 2021 Devisha Padmaperuma
