@@ -1,3 +1,4 @@
+// verifying.java -> Unit tests for verifying
 /*
     Devify
     Copyright (C) 2021 Devisha Padmaperuma
@@ -19,12 +20,12 @@ package com.smilin_dominator.devify.test;
 
 import com.smilin_dominator.devify.backend.hash;
 import com.smilin_dominator.devify.backend.verify;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.Test;
 import org.junit.FixMethodOrder;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
 import org.junit.runners.MethodSorters;
 
-import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -43,6 +44,7 @@ public class verifying {
     private final verify Verify = new verify();
 
     @Test
+    @Order(1)
     void two_hashes() {
 
         String hash1 = "bf3f1a53a871ca130b3a238b3de8c757c6d9ba9614e8fc73ddb23daf003a8cd9";
@@ -58,6 +60,7 @@ public class verifying {
     }
 
     @Test
+    @Order(1)
     void string_hash() {
 
         String string = "You Are A Donk!";
@@ -70,6 +73,7 @@ public class verifying {
     }
 
     @Test
+    @Order(2)
     void verifying_file() throws IOException {
 
         File ver = new File("verify_test.txt");
@@ -78,7 +82,7 @@ public class verifying {
         List<String> spl = Arrays.asList("Unicorn", "Lasagna", "lol!");
         Files.write(ver.toPath(), spl, StandardCharsets.UTF_8);
 
-        String hash = "27f6b7d42d75634cd4f41d771f96b47a60df33029cfd517e3a62f51d42f47976";
+        String hash = "d2725eec6af3fc3ea92c0ee285bb6780d6414f28a3d06b18f69cca57025f9360";
         boolean True = Verify.verify_file(ver.toString(), hash);
 
         assertTrue(True);
@@ -86,23 +90,23 @@ public class verifying {
     }
 
     @Test
+    @Order(3)
     void verifying_the_checksum() {
 
-        File ver = new File("verify_test.txt");
+        File tbh = new File("verify_test.txt");
         hash Hash = new hash();
-        Hash.checksum("d2725eec6af3fc3ea92c0ee285bb6780d6414f28a3d06b18f69cca57025f9360", ver.getAbsolutePath(), "verify_hash.txt");
+        Hash.checksum("d2725eec6af3fc3ea92c0ee285bb6780d6414f28a3d06b18f69cca57025f9360", tbh.getAbsolutePath(), "test_sha256.txt");
 
-        HashMap<String, String> hashes = Verify.getFiles("verify_hash.txt");
-        String newHash = Hash.file(ver.getAbsolutePath());
-        assert Objects.equals(hashes.get(ver.getAbsolutePath()), newHash);
+        HashMap<String, String> hashes = Verify.getFiles("test_sha256.txt");
+        String newHash = Hash.file(tbh.getAbsolutePath());
+        assert Objects.equals(hashes.get(tbh.getAbsolutePath()), newHash);
 
     }
 
     @AfterAll
     static void clean() {
         new File("verify_test.txt").delete();
-        new File("verify_hash.txt").delete();
-
+        new File("test_sha256.txt").delete();
     }
 
 }

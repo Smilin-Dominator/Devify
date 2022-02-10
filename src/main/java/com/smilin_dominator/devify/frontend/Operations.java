@@ -1,4 +1,4 @@
-// ThreadWrapper.java -> Wraps the functions in the backend with Threading
+// Operations.java -> Wraps the functions in the backend with Threading
 /*
     Devify
     Copyright (C) 2021 Devisha Padmaperuma
@@ -18,16 +18,15 @@
 */
 package com.smilin_dominator.devify.frontend;
 
-import javax.swing.JLabel;
-import javax.swing.JTree;
+import com.smilin_dominator.devify.backend.hash;
+import com.smilin_dominator.devify.backend.verify;
+
+import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 import java.util.HashMap;
 import java.util.Objects;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
-import com.smilin_dominator.devify.backend.hash;
-import com.smilin_dominator.devify.backend.verify;
 
 public class Operations {
 

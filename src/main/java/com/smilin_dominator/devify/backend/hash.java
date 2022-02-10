@@ -1,3 +1,4 @@
+// hash.java -> This contains all the functions related to hashing
 /*
     Devify
     Copyright (C) 2021 Devisha Padmaperuma
@@ -19,10 +20,8 @@ package com.smilin_dominator.devify.backend;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
-import javax.swing.JTextField;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;

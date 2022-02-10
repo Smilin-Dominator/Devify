@@ -1,3 +1,4 @@
+// Verify.java -> This is the frontend for verifying
 /*
     Devify
     Copyright (C) 2021 Devisha Padmaperuma
@@ -18,6 +19,7 @@
 package com.smilin_dominator.devify.frontend;
 
 import com.smilin_dominator.devify.backend.resources;
+
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 import java.awt.*;

@@ -1,3 +1,4 @@
+// commonFuncs.java -> Unit test for the common functions
 /*
     Devify
     Copyright (C) 2021 Devisha Padmaperuma
@@ -17,10 +18,11 @@
 */
 package com.smilin_dominator.devify.test;
 
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import com.smilin_dominator.devify.backend.common;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class commonFuncs {
 

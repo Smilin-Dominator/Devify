@@ -1,4 +1,5 @@
- /*
+// Hash.java -> This is the frontend for Hashing
+/*
     Devify
     Copyright (C) 2021 Devisha Padmaperuma
 
@@ -17,14 +18,12 @@
 */
 package com.smilin_dominator.devify.frontend;
 
-import com.smilin_dominator.devify.backend.hash;
 import com.smilin_dominator.devify.backend.resources;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 
  public class Hash extends JFrame implements ActionListener {
 
@@ -35,7 +34,6 @@ import java.io.File;
     private final JTextField checksumFileName;
     private final JPanel buttonContainer;
 
-    private final hash HashClass = new hash();
     private final Operations.Hash ops;
 
     public Hash() {
@@ -65,8 +63,10 @@ import java.io.File;
         mainFunctions.setLayout(new BorderLayout());
         mainFunctions.setVisible(true);
 
-        statusBar = new JLabel("I'm The Status Bar!");
+        statusBar = new JLabel("I'm The Status Bar!", JLabel.CENTER);
+
         checksumFileName = new JTextField("sha256.txt");
+        checksumFileName.setHorizontalAlignment(JTextField.CENTER);
 
         buttonContainer = new JPanel();
         buttonContainer.setLayout(new GridLayout(1, 2));
@@ -158,9 +158,7 @@ import java.io.File;
             }
 
             // Sent by mainFunctions
-            case "Calculate The Hash" -> {
-                ops.display_hash(path);
-            }
+            case "Calculate The Hash" -> ops.display_hash(path);
 
             case "Write The Checksum" -> {
                 ops.write_checksum(path, checksumFile);

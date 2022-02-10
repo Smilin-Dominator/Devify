@@ -1,3 +1,4 @@
+// common.java -> This file has common operations that are used by all classes
 /*
     Devify
     Copyright (C) 2021 Devisha Padmaperuma
