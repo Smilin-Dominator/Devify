@@ -35,8 +35,8 @@ public class Main extends JFrame implements ActionListener {
           JButton hash = new JButton("Hash");
           hash.addActionListener(this);
 
-          buttonContainer.add(verify);
           buttonContainer.add(hash);
+          buttonContainer.add(verify);
 
           // Logo
           JLabel logo = new JLabel(resourcesClass.image("logos", "DevifyLogo1.png"), JLabel.CENTER);
