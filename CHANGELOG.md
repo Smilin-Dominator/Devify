@@ -134,6 +134,20 @@ This ensures that the app runs smoothly and doesn't freeze when hashing large fi
 ### Fixed
 - Handled scenarios where files don't exist
 
+## [v1.3.3] - 10th February, 2022
+### Notes
+Me and Manish fixed a few UI related mistakes in Pull Request #19. Afterwards, I rewrote the documentation
+and did some maintenance as well.
+### Features
+- Aligned the Main Elements in the Hash Class to the Center
+- Added the license string and file descriptions to all files
+- Rewrote documentation (README.md)
+### Fixed
+- Fixed faulty tests (outdated, more rather)
+- Optimized Imports
+- Cleaned Code (Hash, verify)
+- Removed redundant file ThreadWrapper.java
+
 [v1.0]: https://github.com/Smilin-Dominator/Devify/releases/tag/v1.0
 [v1.0.1]: https://github.com/Smilin-Dominator/Devify/compare/v1.0...v1.0.1
 [v1.1]: https://github.com/Smilin-Dominator/Devify/compare/v1.0.1...v1.1
@@ -144,7 +158,8 @@ This ensures that the app runs smoothly and doesn't freeze when hashing large fi
 [v1.1.5]: https://github.com/Smilin-Dominator/Devify/compare/v1.1.4...v1.1.5
 [v1.2]: https://github.com/Smilin-Dominator/Devify/compare/v1.1.5..v1.2
 [v1.2.1]: https://github.com/Smilin-Dominator/Devify/compare/v1.2..v1.2.1
-[v1.2.2]:https://github.com/Smilin-Dominator/Devify/compare/v1.2.1...v1.2.2 
-[v1.3]:https://github.com/Smilin-Dominator/Devify/compare/v1.2.2...v1.3 
-[v1.3.1]:https://github.com/Smilin-Dominator/Devify/compare/v1.3...v1.3.1 
-[v1.3.2]:https://github.com/Smilin-Dominator/Devify/compare/v1.3.1...v1.3.2
+[v1.2.2]: https://github.com/Smilin-Dominator/Devify/compare/v1.2.1...v1.2.2 
+[v1.3]: https://github.com/Smilin-Dominator/Devify/compare/v1.2.2...v1.3 
+[v1.3.1]: https://github.com/Smilin-Dominator/Devify/compare/v1.3...v1.3.1 
+[v1.3.2]: https://github.com/Smilin-Dominator/Devify/compare/v1.3.1...v1.3.2
+[v1.3.3]: https://github.com/Smilin-Dominator/Devify/compare/v1.3.2...v1.3.3
