@@ -24,8 +24,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
-public class Hash extends JFrame implements ActionListener {
+ public class Hash extends JFrame implements ActionListener {
 
     private final JTextField filePath;
     private final JFileChooser fileChooser;
@@ -113,6 +114,13 @@ public class Hash extends JFrame implements ActionListener {
     public void run() {
         mainFunctionsVisible(false);
         setVisible(true);
+    }
+
+    public void resetState() {
+        fileChoosingDialog.setVisible(false);
+        mainFunctionsVisible(false);
+        statusBar.setText("I'm The Status Bar!");
+        filePath.setText("Paste The Path Here Or Click The Button On The Right!");
     }
 
     private void mainFunctionsVisible(boolean condition) {

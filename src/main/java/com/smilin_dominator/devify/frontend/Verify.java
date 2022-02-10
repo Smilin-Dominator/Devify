@@ -83,6 +83,12 @@ public class Verify extends JFrame implements ActionListener {
         setVisible(true);
     }
 
+    public void resetState() {
+        pathToChecksum.setText("Paste The Path Here Or Browse Files With The Button On The Right!");
+        verifyTree.setVisible(false);
+        verifyRoot.removeAllChildren();
+    }
+
     public void actionPerformed(ActionEvent e) {
         String com = e.getActionCommand();
         String path = pathToChecksum.getText();

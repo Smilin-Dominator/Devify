@@ -53,8 +53,14 @@ public class Main extends JFrame implements ActionListener {
      public void actionPerformed(ActionEvent e) {
           String com = e.getActionCommand();
           switch (com) {
-               case "Verify" -> verifyClass.run();
-               case "Hash" -> hashClass.run();
+               case "Verify" -> {
+                    verifyClass.resetState();
+                    verifyClass.run();
+               }
+               case "Hash" -> {
+                    hashClass.resetState();
+                    hashClass.run();
+               }
           }
      }
 
