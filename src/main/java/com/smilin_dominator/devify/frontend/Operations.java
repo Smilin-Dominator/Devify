@@ -25,16 +25,16 @@ import java.util.concurrent.Executors;
 import com.smilin_dominator.devify.backend.hash;
 import com.smilin_dominator.devify.backend.verify;
 
-public class ThreadWrapper {
+public class Operations {
 
     private static JLabel status = null;
     private static final verify VerifyClass = new verify();
 
-    public ThreadWrapper(JLabel statusBar) {
+    public Operations(JLabel statusBar) {
         status = statusBar;
     }
 
-    public static class Hash extends ThreadWrapper {
+    public static class Hash extends Operations {
 
         private final ExecutorService exec = Executors.newSingleThreadExecutor();
         private final hash HashClass = new hash();
