@@ -19,6 +19,7 @@
 package com.smilin_dominator.devify.frontend;
 
 import com.smilin_dominator.devify.backend.resources;
+
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 import java.awt.*;

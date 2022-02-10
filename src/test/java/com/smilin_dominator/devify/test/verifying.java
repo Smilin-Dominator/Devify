@@ -20,13 +20,12 @@ package com.smilin_dominator.devify.test;
 
 import com.smilin_dominator.devify.backend.hash;
 import com.smilin_dominator.devify.backend.verify;
+import org.junit.FixMethodOrder;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
-import org.junit.FixMethodOrder;
 import org.junit.runners.MethodSorters;
 
-import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;

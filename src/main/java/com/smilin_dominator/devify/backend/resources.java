@@ -18,7 +18,7 @@
 */
 package com.smilin_dominator.devify.backend;
 
-import javax.swing.ImageIcon;
+import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 import java.io.InputStream;
