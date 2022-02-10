@@ -30,7 +30,7 @@ public class Hash extends JFrame implements ActionListener {
     private final JTextField filePath;
     private final JFileChooser fileChooser;
     private final JDialog fileChoosingDialog;
-    private final JTextField statusBar;
+    private final JLabel statusBar;
     private final JTextField checksumFileName;
     private final JPanel buttonContainer;
 
@@ -63,7 +63,7 @@ public class Hash extends JFrame implements ActionListener {
         mainFunctions.setLayout(new BorderLayout());
         mainFunctions.setVisible(true);
 
-        statusBar = new JTextField("I'm The Status Bar!");
+        statusBar = new JLabel("I'm The Status Bar!");
         checksumFileName = new JTextField("sha256.txt");
 
         buttonContainer = new JPanel();
