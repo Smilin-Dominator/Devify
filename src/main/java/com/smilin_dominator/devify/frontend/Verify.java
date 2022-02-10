@@ -38,7 +38,7 @@ public class Verify extends JFrame implements ActionListener {
     public Verify() {
 
         // Main Options
-        setSize(600,800);
+        setSize(600,1000);
         setTitle("Devify - Verifying!");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
@@ -63,9 +63,8 @@ public class Verify extends JFrame implements ActionListener {
         fileSelectionDialog.add(fileChooser);
 
         // Final
-        JPanel verifyPanel = new JPanel();
+        JScrollPane verifyPanel = new JScrollPane(verifyTree);
         verifyTree.setVisible(false);
-        verifyPanel.add(verifyTree);
 
         selection.add(pathToChecksum, BorderLayout.CENTER);
         selection.add(selectButton, BorderLayout.AFTER_LAST_LINE);
