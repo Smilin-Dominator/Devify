@@ -35,6 +35,7 @@ public class Hash extends JFrame implements ActionListener {
     private final JPanel buttonContainer;
 
     private final hash HashClass = new hash();
+    private final ThreadWrapper.Hash ops;
 
     public Hash() {
 
@@ -85,6 +86,8 @@ public class Hash extends JFrame implements ActionListener {
         fileChooser.addActionListener(this);
 
         // Final Stage
+        ops = new ThreadWrapper.Hash(statusBar);
+
         fileChoosingDialog.add(fileChooser);
 
         buttonContainer.add(showHash);
@@ -148,13 +151,11 @@ public class Hash extends JFrame implements ActionListener {
 
             // Sent by mainFunctions
             case "Calculate The Hash" -> {
-                String hash = HashClass.file(path);
-                statusBar.setText(hash);
+                ops.display_hash(path);
             }
 
             case "Write The Checksum" -> {
-                String hash = HashClass.file(path);
-                HashClass.checksum(hash, path, checksumFile, statusBar);
+                ops.write_checksum(path, checksumFile);
                 fileChooser.rescanCurrentDirectory();
             }
 
