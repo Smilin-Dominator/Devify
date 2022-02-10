@@ -19,6 +19,10 @@
 package com.smilin_dominator.devify.frontend;
 
 import javax.swing.JLabel;
+import javax.swing.JTree;
+import javax.swing.tree.DefaultMutableTreeNode;
+import java.util.HashMap;
+import java.util.Objects;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -55,6 +59,21 @@ public class Operations {
                     case 3 -> status.setText("There's a checksum file in this directory!");
                 }
             });
+        }
+
+    }
+
+    public static class Verify extends Operations {
+
+        private final JTree tree;
+        private final DefaultMutableTreeNode root;
+        private final ExecutorService exec = Executors.newSingleThreadExecutor();
+        private final verify VerifyClass = new verify();
+        private final hash HashClass = new hash();
+
+        public Verify(JTree treeWidget, DefaultMutableTreeNode treeRoot) {
+            this.tree = treeWidget;
+            this.root = treeRoot;
         }
 
     }
