@@ -35,8 +35,8 @@ public class Main extends JFrame implements ActionListener {
           JButton hash = new JButton("Hash");
           hash.addActionListener(this);
 
-          buttonContainer.add(verify);
           buttonContainer.add(hash);
+          buttonContainer.add(verify);
 
           // Logo
           JLabel logo = new JLabel(resourcesClass.image("logos", "DevifyLogo1.png"), JLabel.CENTER);
@@ -53,8 +53,14 @@ public class Main extends JFrame implements ActionListener {
      public void actionPerformed(ActionEvent e) {
           String com = e.getActionCommand();
           switch (com) {
-               case "Verify" -> verifyClass.run();
-               case "Hash" -> hashClass.run();
+               case "Verify" -> {
+                    verifyClass.resetState();
+                    verifyClass.run();
+               }
+               case "Hash" -> {
+                    hashClass.resetState();
+                    hashClass.run();
+               }
           }
      }
 
