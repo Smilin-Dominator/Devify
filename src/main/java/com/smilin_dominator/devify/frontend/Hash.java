@@ -78,6 +78,10 @@ import java.awt.event.ActionListener;
         JButton generateChecksums = new JButton("Write The Checksum");
         generateChecksums.addActionListener(this);
 
+        JPanel userOptions = new JPanel(new GridLayout(2, 1));
+        userOptions.add(checksumFileName);
+        userOptions.add(algorithmChooser);
+
         // The Hidden File Selection Dialog
         fileChoosingDialog = new JDialog();
         fileChoosingDialog.setSize(400, 600);
@@ -96,9 +100,8 @@ import java.awt.event.ActionListener;
         buttonContainer.add(generateChecksums);
 
         mainFunctions.add(statusBar, BorderLayout.PAGE_START);
-        mainFunctions.add(algorithmChooser, BorderLayout.NORTH);
         mainFunctions.add(buttonContainer, BorderLayout.CENTER);
-        mainFunctions.add(checksumFileName, BorderLayout.PAGE_END);
+        mainFunctions.add(userOptions, BorderLayout.PAGE_END);
 
         FileContainer.add(filePath, BorderLayout.CENTER);
         FileContainer.add(usePath, BorderLayout.AFTER_LAST_LINE);
@@ -126,6 +129,7 @@ import java.awt.event.ActionListener;
     }
 
     private void mainFunctionsVisible(boolean condition) {
+        algorithmChooser.setVisible(condition);
         statusBar.setVisible(condition);
         buttonContainer.setVisible(condition);
         checksumFileName.setVisible(condition);
