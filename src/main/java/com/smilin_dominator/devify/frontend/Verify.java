@@ -31,7 +31,7 @@ public class Verify extends JFrame implements ActionListener {
     private final JDialog fileSelectionDialog = new JDialog();
     private final JFileChooser fileChooser = new JFileChooser();
     private final JTextField pathToChecksum = new JTextField("Paste The Path Here Or Browse Files With The Button On The Right!");
-
+    private final JComboBox<String> algorithmChooser = new JComboBox<>(new String[]{"SHA256", "SHA512", "MD5"});
     private final DefaultMutableTreeNode verifyRoot = new DefaultMutableTreeNode("Files");
     private final JTree verifyTree = new JTree(verifyRoot);
     private final Operations.Verify ops = new Operations.Verify(verifyTree, verifyRoot);
@@ -68,6 +68,7 @@ public class Verify extends JFrame implements ActionListener {
         JScrollPane verifyPanel = new JScrollPane(verifyTree);
         verifyTree.setVisible(false);
 
+        selection.add(algorithmChooser, BorderLayout.NORTH);
         selection.add(pathToChecksum, BorderLayout.CENTER);
         selection.add(selectButton, BorderLayout.AFTER_LINE_ENDS);
         selection.add(confirmVerification, BorderLayout.AFTER_LAST_LINE);
@@ -92,12 +93,13 @@ public class Verify extends JFrame implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
+        String algorithm = (String) algorithmChooser.getSelectedItem();
         String com = e.getActionCommand();
         String path = pathToChecksum.getText();
         switch (com) {
 
             // sent by confirmVerification
-            case "Verify" -> ops.CheckFiles(path);
+            case "Verify" -> ops.CheckFiles(path, algorithm);
 
             // Sent by selectButton
             case "Select File" -> fileSelectionDialog.setVisible(true);
@@ -106,7 +108,7 @@ public class Verify extends JFrame implements ActionListener {
             case "ApproveSelection" -> {
                 pathToChecksum.setText(fileChooser.getSelectedFile().getAbsolutePath());
                 fileSelectionDialog.setVisible(false);
-                ops.CheckFiles(pathToChecksum.getText());
+                ops.CheckFiles(pathToChecksum.getText(), algorithm);
             }
 
             case "CancelSelection" -> {
