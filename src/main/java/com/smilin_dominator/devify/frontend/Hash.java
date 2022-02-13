@@ -33,6 +33,7 @@ import java.awt.event.ActionListener;
     private final JLabel statusBar;
     private final JTextField checksumFileName;
     private final JPanel buttonContainer;
+    private final JComboBox<String> algorithmChooser = new JComboBox<>(new String[]{"SHA256", "SHA512", "MD5"});
 
     private final Operations.Hash ops;
 
@@ -65,7 +66,7 @@ import java.awt.event.ActionListener;
 
         statusBar = new JLabel("I'm The Status Bar!", JLabel.CENTER);
 
-        checksumFileName = new JTextField("sha256.txt");
+        checksumFileName = new JTextField("checksums.txt");
         checksumFileName.setHorizontalAlignment(JTextField.CENTER);
 
         buttonContainer = new JPanel();
@@ -76,6 +77,10 @@ import java.awt.event.ActionListener;
 
         JButton generateChecksums = new JButton("Write The Checksum");
         generateChecksums.addActionListener(this);
+
+        JPanel userOptions = new JPanel(new GridLayout(2, 1));
+        userOptions.add(checksumFileName);
+        userOptions.add(algorithmChooser);
 
         // The Hidden File Selection Dialog
         fileChoosingDialog = new JDialog();
@@ -94,9 +99,9 @@ import java.awt.event.ActionListener;
         buttonContainer.add(showHash);
         buttonContainer.add(generateChecksums);
 
-        mainFunctions.add(statusBar, BorderLayout.NORTH);
+        mainFunctions.add(statusBar, BorderLayout.PAGE_START);
         mainFunctions.add(buttonContainer, BorderLayout.CENTER);
-        mainFunctions.add(checksumFileName, BorderLayout.PAGE_END);
+        mainFunctions.add(userOptions, BorderLayout.PAGE_END);
 
         FileContainer.add(filePath, BorderLayout.CENTER);
         FileContainer.add(usePath, BorderLayout.AFTER_LAST_LINE);
@@ -124,6 +129,7 @@ import java.awt.event.ActionListener;
     }
 
     private void mainFunctionsVisible(boolean condition) {
+        algorithmChooser.setVisible(condition);
         statusBar.setVisible(condition);
         buttonContainer.setVisible(condition);
         checksumFileName.setVisible(condition);
@@ -131,6 +137,7 @@ import java.awt.event.ActionListener;
 
     public void actionPerformed(ActionEvent e) {
         String com = e.getActionCommand();
+        String algorithm = (String) algorithmChooser.getSelectedItem();
         String path = filePath.getText();
         String checksumFile = checksumFileName.getText();
         switch (com) {
@@ -158,10 +165,10 @@ import java.awt.event.ActionListener;
             }
 
             // Sent by mainFunctions
-            case "Calculate The Hash" -> ops.display_hash(path);
+            case "Calculate The Hash" -> ops.display_hash(path, algorithm);
 
             case "Write The Checksum" -> {
-                ops.write_checksum(path, checksumFile);
+                ops.write_checksum(path, checksumFile, algorithm);
                 fileChooser.rescanCurrentDirectory();
             }
 

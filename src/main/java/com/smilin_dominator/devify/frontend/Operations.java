@@ -42,22 +42,22 @@ public class Operations {
             this.status = statusBar;
         }
 
-        public void display_hash(String fn) {
+        public void display_hash(String fn, String algo) {
             exec.submit(() -> {
                 status.setText("Calculating Hash!");
-                String hash = HashClass.file(fn);
+                String hash = HashClass.file(fn, algo);
                 if (Objects.equals(hash, "")) {
                     status.setText("File Not Found!");
                 } else {
-                    status.setText(HashClass.file(fn));
+                    status.setText(hash);
                 }
             });
         }
 
-        public void write_checksum(String path, String checksumPath) {
+        public void write_checksum(String path, String checksumPath, String algo) {
             exec.submit(() -> {
                 status.setText("Writing Checksum!");
-                String hash = HashClass.file(path);
+                String hash = HashClass.file(path, algo);
                 if (Objects.equals(hash, "")) {
                     status.setText("File Not Found!");
                 } else {
@@ -102,7 +102,7 @@ public class Operations {
          * This creates TreeNodes for each file, containing it's status
          * @param checksumFileName Path to the checksum file
          */
-        public void CheckFiles(String checksumFileName) {
+        public void CheckFiles(String checksumFileName, String algo) {
 
             exec.submit(() -> {
                 tree.setVisible(false);
@@ -115,7 +115,7 @@ public class Operations {
 
                     Path pathToFile = Paths.get(checksum_dir.toString(), file);
 
-                    String newHash = HashClass.file(pathToFile.toString());
+                    String newHash = HashClass.file(pathToFile.toString(), algo);
                     if (Objects.equals(newHash, "")) {
                         newHash = "File Doesn't Exist!";
                     }

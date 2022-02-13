@@ -18,6 +18,7 @@
 */
 package com.smilin_dominator.devify.backend;
 
+import com.sun.source.tree.BreakTree;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import java.io.File;
@@ -36,19 +37,34 @@ public class hash {
     /**
      * Returns a hash of a string
      * @param a The string to be hashed
+     * @param algo The hashing algorithm
      * @return The SHA256 Hash as a string
      */
-    public String string(String a) {
-        return DigestUtils.sha256Hex(a);
+    public String string(String a, String algo) {
+        switch (algo) {
+            case "SHA256" -> {
+                return DigestUtils.sha256Hex(a);
+            }
+            case "SHA512" -> {
+                return DigestUtils.sha512Hex(a);
+            }
+            case "MD5" -> {
+                return DigestUtils.md5Hex(a);
+            }
+            default -> {
+                return "";
+            }
+        }
     }
 
     /**
      * Loads a file as a FileInputStream and returns it's hash, similar to the 'sha256sum' and 'Get-FileHash' commands
      * in *NIX and DOS respectively
      * @param path The path to the file
+     * @param algo The hashing algorithm to use
      * @return The SHA256 Hash of the File if the file exists, otherwise it returns a ""
      */
-    public String file(String path) {
+    public String file(String path, String algo) {
 
         // Creating A File With The Path
         File fil = new File(path);
@@ -62,7 +78,11 @@ public class hash {
         // Hashing the file itself
         String hash = "";
         try {
-            hash = DigestUtils.sha256Hex(new FileInputStream(fil));
+            switch (algo) {
+                case "SHA256" -> hash = DigestUtils.sha256Hex(new FileInputStream(fil));
+                case "MD5" -> hash = DigestUtils.md5Hex(new FileInputStream(fil));
+                case "SHA512" -> hash = DigestUtils.sha512Hex(new FileInputStream(fil));
+            }
             System.out.println("Chosen File : " + path);
             System.out.println("Hash        : " + hash);
         } catch (IOException e) {
