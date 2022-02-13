@@ -18,6 +18,7 @@
 */
 package com.smilin_dominator.devify.backend;
 
+import com.sun.source.tree.BreakTree;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import java.io.File;
@@ -36,10 +37,24 @@ public class hash {
     /**
      * Returns a hash of a string
      * @param a The string to be hashed
+     * @param algo The hashing algorithm
      * @return The SHA256 Hash as a string
      */
-    public String string(String a) {
-        return DigestUtils.sha256Hex(a);
+    public String string(String a, String algo) {
+        switch (algo) {
+            case "SHA256" -> {
+                return DigestUtils.sha256Hex(a);
+            }
+            case "SHA512" -> {
+                return DigestUtils.sha512Hex(a);
+            }
+            case "MD5" -> {
+                return DigestUtils.md5Hex(a);
+            }
+            default -> {
+                return "";
+            }
+        }
     }
 
     /**
