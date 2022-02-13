@@ -66,7 +66,7 @@ import java.awt.event.ActionListener;
 
         statusBar = new JLabel("I'm The Status Bar!", JLabel.CENTER);
 
-        checksumFileName = new JTextField("sha256.txt");
+        checksumFileName = new JTextField("checksums.txt");
         checksumFileName.setHorizontalAlignment(JTextField.CENTER);
 
         buttonContainer = new JPanel();
