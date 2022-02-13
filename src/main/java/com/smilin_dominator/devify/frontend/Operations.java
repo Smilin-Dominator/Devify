@@ -23,6 +23,8 @@ import com.smilin_dominator.devify.backend.verify;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Objects;
 import java.util.concurrent.ExecutorService;
@@ -106,10 +108,14 @@ public class Operations {
                 tree.setVisible(false);
 
                 root.removeAllChildren();
+
+                Path checksum_dir = Paths.get(checksumFileName).getParent();
                 HashMap<String, String> FileHashMap = VerifyClass.getFiles(checksumFileName);
                 for (String file : FileHashMap.keySet()) {
 
-                    String newHash = HashClass.file(file);
+                    Path pathToFile = Paths.get(checksum_dir.toString(), file);
+
+                    String newHash = HashClass.file(pathToFile.toString());
                     if (Objects.equals(newHash, "")) {
                         newHash = "File Doesn't Exist!";
                     }
@@ -130,7 +136,6 @@ public class Operations {
 
                 extendElements(tree.getRowCount(), 0);
 
-                tree.revalidate();
                 tree.setVisible(true);
             });
 
