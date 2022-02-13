@@ -154,7 +154,17 @@ I fixed an error of Devify not being able to hash relative / filename only paths
 ### Features
 - None
 ### Fixed
-- Made Devify Support Relative File Paths
+- None
+
+## [v1.4] - 13th February, 2022
+### Notes
+I made the program support hashing with the SHA512 and MD5 Algorithms. You can
+switch them by using the new ComboBox widget.
+### Features
+- Support for MD5 Hashes
+- Support for SHA512 Hashes
+### Fixed
+- None
 
 [v1.0]: https://github.com/Smilin-Dominator/Devify/releases/tag/v1.0
 [v1.0.1]: https://github.com/Smilin-Dominator/Devify/compare/v1.0...v1.0.1
@@ -172,3 +182,4 @@ I fixed an error of Devify not being able to hash relative / filename only paths
 [v1.3.2]: https://github.com/Smilin-Dominator/Devify/compare/v1.3.1...v1.3.2
 [v1.3.3]: https://github.com/Smilin-Dominator/Devify/compare/v1.3.2...v1.3.3
 [v1.3.4]: https://github.com/Smilin-Dominator/Devify/compare/v1.3.3...v1.3.4
+[v1.4]: https://github.com/Smilin-Dominator/Devify/compare/v1.3.4...v1.4
