@@ -83,12 +83,15 @@ public class hash {
      */
     public int checksum(String hash, String path, String checksum_file) {
 
+        // String filename (without directories)
+        Path fn = Paths.get(path).getFileName();
+
         // Getting the path of the checksum hash
         Path directory = Paths.get(path).getParent();
         Path path_to_cs = Paths.get(directory.toString(), checksum_file);
 
         // Constructing the string
-        String text = hash + "  " + path;
+        String text = hash + "  " + fn.toString();
 
         // Writing to the file
         try {
