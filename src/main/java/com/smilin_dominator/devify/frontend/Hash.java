@@ -33,6 +33,7 @@ import java.awt.event.ActionListener;
     private final JLabel statusBar;
     private final JTextField checksumFileName;
     private final JPanel buttonContainer;
+    private final JComboBox<String> algorithmChooser = new JComboBox<>(new String[]{"SHA256", "SHA512", "MD5"});
 
     private final Operations.Hash ops;
 
@@ -94,7 +95,8 @@ import java.awt.event.ActionListener;
         buttonContainer.add(showHash);
         buttonContainer.add(generateChecksums);
 
-        mainFunctions.add(statusBar, BorderLayout.NORTH);
+        mainFunctions.add(statusBar, BorderLayout.PAGE_START);
+        mainFunctions.add(algorithmChooser, BorderLayout.NORTH);
         mainFunctions.add(buttonContainer, BorderLayout.CENTER);
         mainFunctions.add(checksumFileName, BorderLayout.PAGE_END);
 
@@ -131,6 +133,7 @@ import java.awt.event.ActionListener;
 
     public void actionPerformed(ActionEvent e) {
         String com = e.getActionCommand();
+        String algorithm = (String) algorithmChooser.getSelectedItem();
         String path = filePath.getText();
         String checksumFile = checksumFileName.getText();
         switch (com) {
@@ -158,10 +161,10 @@ import java.awt.event.ActionListener;
             }
 
             // Sent by mainFunctions
-            case "Calculate The Hash" -> ops.display_hash(path);
+            case "Calculate The Hash" -> ops.display_hash(path, algorithm);
 
             case "Write The Checksum" -> {
-                ops.write_checksum(path, checksumFile);
+                ops.write_checksum(path, checksumFile, algorithm);
                 fileChooser.rescanCurrentDirectory();
             }
 
