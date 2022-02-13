@@ -53,11 +53,12 @@ public class verify {
      * Verifies the hash of a file
      * @param path The path to the file
      * @param hash The hash of the file
+     * @param algo The algorithm to hash the file in
      * @return True if they're the same, False if they're different
      * @throws IOException If there's an error while reading the file
      */
-    public boolean verify_file(String path, String hash) {
-        String new_hash = hashing.file(path);
+    public boolean verify_file(String path, String hash, String algo) {
+        String new_hash = hashing.file(path, algo);
         return compare_hashes(hash, new_hash);
     }
 
@@ -65,10 +66,11 @@ public class verify {
      * Verifies a string and it's hash
      * @param string The String
      * @param hash The Hash of The String
+     * @param algo The algorithm to hash the file in
      * @return True if they're the same, False if they're different.
      */
-    public boolean verify_string(String string, String hash) {
-        String new_hash = hashing.string(string);
+    public boolean verify_string(String string, String hash, String algo) {
+        String new_hash = hashing.string(string, algo);
         return compare_hashes(hash, new_hash);
     }
 
