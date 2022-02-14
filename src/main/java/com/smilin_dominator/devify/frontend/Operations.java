@@ -32,10 +32,12 @@ import java.util.concurrent.Executors;
 
 public class Operations {
 
+    private static final hash HashClass = new hash();
+    private static final verify VerifyClass = new verify();
+
     public static class Hash extends Operations {
 
         private final ExecutorService exec = Executors.newSingleThreadExecutor();
-        private final hash HashClass = new hash();
         private final JLabel status;
 
         /**
@@ -96,8 +98,6 @@ public class Operations {
         private final JTree tree;
         private final DefaultMutableTreeNode root;
         private final ExecutorService exec = Executors.newSingleThreadExecutor();
-        private final verify VerifyClass = new verify();
-        private final hash HashClass = new hash();
 
         /**
          * This sets the TreeWidget, TreeRoot to their counterparts in Verify
