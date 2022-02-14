@@ -50,7 +50,6 @@ public class verify {
      * @param hash The hash of the file
      * @param algo The algorithm to hash the file in
      * @return True if they're the same, False if they're different
-     * @throws IOException If there's an error while reading the file
      */
     public boolean verify_file(String path, String hash, String algo) {
         String new_hash = hashing.file(path, algo);
