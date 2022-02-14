@@ -38,10 +38,19 @@ public class Operations {
         private final hash HashClass = new hash();
         private final JLabel status;
 
+        /**
+         * This accepts the Status JLabel and sets it
+         * @param statusBar The Status JLabel
+         */
         public Hash(JLabel statusBar) {
             this.status = statusBar;
         }
 
+        /**
+         * This launches a thread that displays the hash of the file in the status bar.
+         * @param fn Path to the file to hash
+         * @param algo Algorithm to hash in
+         */
         public void display_hash(String fn, String algo) {
             exec.submit(() -> {
                 status.setText("Calculating Hash!");
@@ -54,6 +63,15 @@ public class Operations {
             });
         }
 
+        /**
+         * This accepts a Path to the File to be Hashed, Filename of the checksum file and
+         * the hashing algorithm and sets the status according to the status.
+         * @param path The Path of the File to Hash
+         * @param checksumPath The filename of the checksum file to save it to (same dir)
+         * @param algo The hashing algorithm
+         *
+         *
+         */
         public void write_checksum(String path, String checksumPath, String algo) {
             exec.submit(() -> {
                 status.setText("Writing Checksum!");
