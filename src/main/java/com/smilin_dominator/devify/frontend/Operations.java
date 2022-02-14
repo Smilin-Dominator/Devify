@@ -81,6 +81,11 @@ public class Operations {
         private final verify VerifyClass = new verify();
         private final hash HashClass = new hash();
 
+        /**
+         * This sets the TreeWidget, TreeRoot to their counterparts in Verify
+         * @param treeWidget The Main Tree Widget
+         * @param treeRoot The Root Tree Node (in this case, it's "Files")
+         */
         public Verify(JTree treeWidget, DefaultMutableTreeNode treeRoot) {
             this.tree = treeWidget;
             this.root = treeRoot;
