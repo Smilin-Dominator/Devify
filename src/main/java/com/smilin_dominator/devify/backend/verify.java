@@ -68,6 +68,12 @@ public class verify {
         return compare_hashes(hash, new_hash);
     }
 
+    /**
+     * This accepts a checksum file path as a parameter, reads it and returns a HashMap
+     * of the filess and their hashes.
+     * @param checksumFileName Path to the checksum file
+     * @return A HashMap of files and their hashes
+     */
     public HashMap<String,String> getFiles(String checksumFileName) {
 
         // Make 'Path' objects
