@@ -31,11 +31,6 @@ import java.util.Objects;
  */
 public class verify {
 
-    private Path getChecksumLocation(String filePath, String checksumFileName) {
-        Path dirOfFile = Paths.get(filePath).getParent();
-        return Paths.get(dirOfFile.toString(), checksumFileName);
-    }
-
     // An instance of the Hash class
     private final hash hashing = new hash();
 
