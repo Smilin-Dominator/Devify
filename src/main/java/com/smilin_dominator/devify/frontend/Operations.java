@@ -32,16 +32,27 @@ import java.util.concurrent.Executors;
 
 public class Operations {
 
-    public static class Hash extends Operations {
+    private static final hash HashClass = new hash();
+    private static final verify VerifyClass = new verify();
+
+    public static class Hash {
 
         private final ExecutorService exec = Executors.newSingleThreadExecutor();
-        private final hash HashClass = new hash();
         private final JLabel status;
 
+        /**
+         * This accepts the Status JLabel and sets it
+         * @param statusBar The Status JLabel
+         */
         public Hash(JLabel statusBar) {
             this.status = statusBar;
         }
 
+        /**
+         * This launches a thread that displays the hash of the file in the status bar.
+         * @param fn Path to the file to hash
+         * @param algo Algorithm to hash in
+         */
         public void display_hash(String fn, String algo) {
             exec.submit(() -> {
                 status.setText("Calculating Hash!");
@@ -54,6 +65,15 @@ public class Operations {
             });
         }
 
+        /**
+         * This accepts a Path to the File to be Hashed, Filename of the checksum file and
+         * the hashing algorithm and sets the status according to the status.
+         * @param path The Path of the File to Hash
+         * @param checksumPath The filename of the checksum file to save it to (same dir)
+         * @param algo The hashing algorithm
+         *
+         *
+         */
         public void write_checksum(String path, String checksumPath, String algo) {
             exec.submit(() -> {
                 status.setText("Writing Checksum!");
@@ -73,14 +93,17 @@ public class Operations {
 
     }
 
-    public static class Verify extends Operations {
+    public static class Verify {
 
         private final JTree tree;
         private final DefaultMutableTreeNode root;
         private final ExecutorService exec = Executors.newSingleThreadExecutor();
-        private final verify VerifyClass = new verify();
-        private final hash HashClass = new hash();
 
+        /**
+         * This sets the TreeWidget, TreeRoot to their counterparts in Verify
+         * @param treeWidget The Main Tree Widget
+         * @param treeRoot The Root Tree Node (in this case, it's "Files")
+         */
         public Verify(JTree treeWidget, DefaultMutableTreeNode treeRoot) {
             this.tree = treeWidget;
             this.root = treeRoot;

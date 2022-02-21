@@ -31,11 +31,6 @@ import java.util.Objects;
  */
 public class verify {
 
-    private Path getChecksumLocation(String filePath, String checksumFileName) {
-        Path dirOfFile = Paths.get(filePath).getParent();
-        return Paths.get(dirOfFile.toString(), checksumFileName);
-    }
-
     // An instance of the Hash class
     private final hash hashing = new hash();
 
@@ -55,7 +50,6 @@ public class verify {
      * @param hash The hash of the file
      * @param algo The algorithm to hash the file in
      * @return True if they're the same, False if they're different
-     * @throws IOException If there's an error while reading the file
      */
     public boolean verify_file(String path, String hash, String algo) {
         String new_hash = hashing.file(path, algo);
@@ -74,6 +68,12 @@ public class verify {
         return compare_hashes(hash, new_hash);
     }
 
+    /**
+     * This accepts a checksum file path as a parameter, reads it and returns a HashMap
+     * of the filess and their hashes.
+     * @param checksumFileName Path to the checksum file
+     * @return A HashMap of files and their hashes
+     */
     public HashMap<String,String> getFiles(String checksumFileName) {
 
         // Make 'Path' objects

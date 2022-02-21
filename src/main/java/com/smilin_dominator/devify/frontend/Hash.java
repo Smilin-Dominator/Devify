@@ -25,7 +25,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
- public class Hash extends JFrame implements ActionListener {
+public class Hash extends JFrame implements ActionListener {
 
     private final JTextField filePath;
     private final JFileChooser fileChooser;
@@ -35,6 +35,7 @@ import java.awt.event.ActionListener;
     private final JPanel buttonContainer;
     private final JComboBox<String> algorithmChooser = new JComboBox<>(new String[]{"SHA256", "SHA512", "MD5"});
 
+    /** Concurrent Wrapper of the Hash Class */
     private final Operations.Hash ops;
 
     public Hash() {
@@ -116,11 +117,13 @@ import java.awt.event.ActionListener;
 
     }
 
+    /** Makes all the elements in the Main Functions window invisible and makes the JFrame Visible */
     public void run() {
         mainFunctionsVisible(false);
         setVisible(true);
     }
 
+    /** This resets the state */
     public void resetState() {
         fileChoosingDialog.setVisible(false);
         mainFunctionsVisible(false);
@@ -128,6 +131,10 @@ import java.awt.event.ActionListener;
         filePath.setText("Paste The Path Here Or Click The Button On The Right!");
     }
 
+    /**
+     * Accepts a boolean value and makes the main functions visible or invisible
+     * @param condition A Boolean Value
+     */
     private void mainFunctionsVisible(boolean condition) {
         algorithmChooser.setVisible(condition);
         statusBar.setVisible(condition);
