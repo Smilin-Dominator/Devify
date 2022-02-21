@@ -35,7 +35,7 @@ public class Operations {
     private static final hash HashClass = new hash();
     private static final verify VerifyClass = new verify();
 
-    public static class Hash extends Operations {
+    public static class Hash {
 
         private final ExecutorService exec = Executors.newSingleThreadExecutor();
         private final JLabel status;
@@ -93,7 +93,7 @@ public class Operations {
 
     }
 
-    public static class Verify extends Operations {
+    public static class Verify {
 
         private final JTree tree;
         private final DefaultMutableTreeNode root;
